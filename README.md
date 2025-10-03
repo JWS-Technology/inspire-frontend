@@ -1,38 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# INSPIRE SOFTECH Group of Companies 
 
-## Getting Started
+**Tagline:** *Empowering Growth through Knowledge & Technology*  
 
-First, run the development server:
+Welcome to the official repository of the **INSPIRE SOFTECH Group of Companies** website.  
+This project represents a unified digital presence for our four specialized companies — providing training, IT solutions, enterprise services, and research in emerging technologies.  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## About the Project  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The **INSPIRE SOFTECH Group Website** is designed to showcase:  
+- Company portfolio  
+- Services offered  
+- Mission, vision, and values  
+- Contact and engagement information  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This repository contains the complete website content, structure, and assets for deployment.  
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Group Companies  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The website highlights our **four core companies** under one umbrella:  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 1. Inspire Softech Solutions  
+*Empowering Minds through Training, Internships & Skill Development.*  
+- Internship programs (AICTE-approved)  
+- Workshops & FDPs  
+- Job-oriented certifications  
 
-## Deploy on Vercel
+### 2. Edinz Tech Pvt. Ltd.  
+*Innovating Businesses with Smart Digital Solutions.*  
+- Web & mobile app development  
+- IT consulting & strategy  
+- Cloud & e-commerce solutions  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. Adore Technology Solutions  
+*Transforming Enterprises with Cloud & Business Technology.*  
+- ERP & CRM implementation  
+- Business automation & IT support  
+- Cloud-based enterprise systems  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# inspire-frontend
-# inspire-frontend
+### 4. Igrean StarTech Solutions  
+*Driving the Future with AI, IoT & Emerging Tech.*  
+- AI & Machine Learning  
+- IoT solutions & prototyping  
+- Data Science & advanced analytics  
+
+---
+
+## Website Structure  
+
+### Pages Included:  
+1. **Home Page** – Hero section, introduction, quick links  
+2. **About Us** – Who we are, mission, vision, and values  
+3. **Our Companies** – Profiles of all four companies  
+4. **Services** – End-to-end offerings (training, IT, enterprise, R&D)  
+5. **Contact Us** – Contact details and form  
+6. **Footer** – Common navigation and contact info  
+
+---
+
+## Tech Stack (Suggested)  
+
+While the repository can be implemented in different stacks, a suggested setup is:  
+- **Frontend:** React / Next.js  
+- **Styling:** Tailwind CSS / Bootstrap  
+- **Backend (optional):** Node.js / Express.js  
+- **Hosting:** Vercel, Netlify, or any cloud platform  
+
+---
+
+## Contact  
+
+**INSPIRE SOFTECH Group of Companies**  
+📍 [Office Address – To be updated]  
+📞 +91 93605 05768 | +91 86674 93679  
+✉️ info@inspiresoftechgroup.com  
+🌐 [www.inspiresoftechgroup.com](http://www.inspiresoftechgroup.com)  
