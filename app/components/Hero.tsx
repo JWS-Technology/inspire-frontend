@@ -8,7 +8,7 @@ const Hero = () => {
   style={{ backgroundImage: "url('/hero-bg.jpg')" }}
 >
   <section
-        className="relative bg-black/50 backdrop-blur-[7px] h-screen flex items-center justify-center text-center px-6"
+        className="relative bg-black/60 backdrop-blur-[7px] h-screen flex items-center justify-center text-center px-6"
       >
 
         {/* Content */}
