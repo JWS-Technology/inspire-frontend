@@ -8,9 +8,9 @@ import NavbarMobile from "./NavbarMobile";
 const Navbar = () => {
     return (
         <>
-        <div className="hidden md:block">
-            <NavbarDesktop />
-        </div>
+            <div className="hidden md:block">
+                <NavbarDesktop />
+            </div>
             <div className="md:hidden">
                 <NavbarMobile />
             </div>
