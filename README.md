@@ -1,4 +1,4 @@
-# INSPIRE SOFTECH Group of Companies 🌐  
+# INSPIRE SOFTECH Group of Companies 
 
 **Tagline:** *Empowering Growth through Knowledge & Technology*  
 
@@ -7,7 +7,7 @@ This project represents a unified digital presence for our four specialized comp
 
 ---
 
-## 🚀 About the Project  
+## About the Project  
 
 The **INSPIRE SOFTECH Group Website** is designed to showcase:  
 - Company portfolio  
@@ -19,7 +19,7 @@ This repository contains the complete website content, structure, and assets for
 
 ---
 
-## 🏢 Group Companies  
+## Group Companies  
 
 The website highlights our **four core companies** under one umbrella:  
 
@@ -49,7 +49,7 @@ The website highlights our **four core companies** under one umbrella:
 
 ---
 
-## 📖 Website Structure  
+## Website Structure  
 
 ### Pages Included:  
 1. **Home Page** – Hero section, introduction, quick links  
@@ -61,7 +61,7 @@ The website highlights our **four core companies** under one umbrella:
 
 ---
 
-## 🛠️ Tech Stack (Suggested)  
+## Tech Stack (Suggested)  
 
 While the repository can be implemented in different stacks, a suggested setup is:  
 - **Frontend:** React / Next.js  
@@ -71,7 +71,7 @@ While the repository can be implemented in different stacks, a suggested setup i
 
 ---
 
-## 📞 Contact  
+## Contact  
 
 **INSPIRE SOFTECH Group of Companies**  
 📍 [Office Address – To be updated]  
