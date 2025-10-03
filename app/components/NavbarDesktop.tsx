@@ -25,8 +25,8 @@ const NavbarDesktop = () => {
                     <li
                         key={link.label}
                         className={`cursor-pointer ${link.label === "Home"
-                                ? "text-amber-500 font-semibold"
-                                : "hover:text-amber-500"
+                            ? "text-amber-500 font-semibold"
+                            : "hover:text-amber-500"
                             }`}
                     >
                         {link.label}
@@ -36,7 +36,7 @@ const NavbarDesktop = () => {
 
             {/* Button */}
             <button className="bg-amber-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md">
-                Get Started
+                Login
             </button>
         </nav>
     );
