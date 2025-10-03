@@ -78,9 +78,3 @@ While the repository can be implemented in different stacks, a suggested setup i
 📞 +91 93605 05768 | +91 86674 93679  
 ✉️ info@inspiresoftechgroup.com  
 🌐 [www.inspiresoftechgroup.com](http://www.inspiresoftechgroup.com)  
-
----
-
-## ⚖️ License  
-
-This project is licensed under the **MIT License** – feel free to use, modify, and distribute with attribution.  
