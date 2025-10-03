@@ -71,18 +71,6 @@ While the repository can be implemented in different stacks, a suggested setup i
 
 ---
 
-## 📂 Repository Structure  
-
-📦 inspiresoftech-website
-┣ 📂 public/ # Static assets (images, icons, etc.)
-┣ 📂 src/ # Source code (components, pages, styles)
-┣ 📜 README.md # Project documentation
-┣ 📜 package.json # Dependencies & scripts
-┣ 📜 .gitignore # Ignored files
-┗ 📜 LICENSE # Open-source license (if applicable)
-
----
-
 ## 📞 Contact  
 
 **INSPIRE SOFTECH Group of Companies**  
