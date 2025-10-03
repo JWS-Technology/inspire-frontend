@@ -1,21 +1,22 @@
 import React from "react";
-import Image from "next/image";
 
 const Hero = () => {
   return (
     <>
-
-      <section className="relative h-screen flex items-center justify-center text-center px-6">
-        {/* Background Image */}
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+<div
+  className="h-screen w-full bg-cover bg-center "
+  style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+>
+  <section
+        className="relative bg-black/50 backdrop-blur-[7px] h-screen flex items-center justify-center text-center px-6"
+      >
 
         {/* Content */}
         <div className="relative z-20 max-w-3xl text-white">
           {/* Badge */}
-          <div className="inline-block bg-yellow-500 text-black font-semibold px-4 py-2 rounded-full mb-6 shadow-md">
+          {/* <div className="inline-block bg-yellow-500 text-black font-semibold px-4 py-2 rounded-full mb-6 shadow-md">
             🎁 WELCOME TO INSPIRE SOFTECH!
-          </div>
+          </div> */}
 
           {/* Heading */}
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
@@ -44,6 +45,8 @@ const Hero = () => {
           </div>
         </div>
       </section>
+</div>
+     
     </>
   );
 };
