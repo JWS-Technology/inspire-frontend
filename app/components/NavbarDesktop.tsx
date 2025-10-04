@@ -11,7 +11,7 @@ const NavbarDesktop = () => {
     ];
 
     return (
-        <nav className="md:flex items-center justify-between bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50">
+        <nav className="w-[97vw] rounded-4xl md:flex items-center justify-between bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50">
             <div className="flex items-center space-x-2">
                 <div className="bg-amber-500 text-white font-bold px-4 py-2 rounded-md">
                     INSPIRE
@@ -35,7 +35,7 @@ const NavbarDesktop = () => {
             </ul>
 
             {/* Button */}
-            <button className="bg-amber-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-md">
+            <button className="bg-amber-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded-3xl">
                 Login
             </button>
         </nav>

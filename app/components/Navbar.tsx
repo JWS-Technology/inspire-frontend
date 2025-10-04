@@ -7,14 +7,14 @@ import NavbarMobile from "./NavbarMobile";
 
 const Navbar = () => {
     return (
-        <>
-            <div className="hidden md:block">
+        <div className="md:relative md:flex md:justify-center md:top-3">
+            <div className="hidden absolute md:b lock md:flex justify-center">
                 <NavbarDesktop />
             </div>
             <div className="md:hidden">
                 <NavbarMobile />
             </div>
-        </>
+        </div>
     );
 };
 
