@@ -131,7 +131,7 @@ const NavbarDesktop = () => {
             </div> */}
             <div className="">
 
-            <Image className="scale-110 translate-x-3" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+            <Image className="scale-110 translate-x-3" height={ 5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
             </div>
 
             {/* Links */}
