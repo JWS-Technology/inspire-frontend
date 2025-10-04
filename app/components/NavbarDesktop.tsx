@@ -1,7 +1,7 @@
 "use client";
-
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 
 const NavbarDesktop = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -121,13 +121,17 @@ const NavbarDesktop = () => {
                 }`}
         >
             {/* Logo */}
-            <div ref={logoRef} className="flex items-center space-x-2 group">
+            {/* <div ref={logoRef} className="flex items-center space-x-2 group">
                 <div className="bg-amber-500 text-white font-bold px-4 py-2 rounded-md transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-lg group-hover:shadow-amber-500/25">
                     INSPIRE
                 </div>
                 <span className="text-white font-semibold text-lg transition-all duration-300 group-hover:text-amber-500">
                     SOFTECH
                 </span>
+            </div> */}
+            <div className="">
+
+            <Image className="scale-110 translate-x-3" height={150} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
             </div>
 
             {/* Links */}
