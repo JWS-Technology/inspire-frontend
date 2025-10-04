@@ -188,7 +188,7 @@ const Hero: React.FC = () => {
             // fallback image used on server and initially on client
             <div
               className="absolute inset-0 bg-cover bg-center md:hidden"
-              style={{ backgroundImage: "url('/hero-bg-mobile.jpg')" }}
+              style={{ backgroundImage: "url('/hero-bg.jpg')" }}
             />
           )}
 
