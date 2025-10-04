@@ -52,7 +52,7 @@ const Hero = () => {
       const tl = gsap.timeline({ delay: 0.8 });
 
       tl.fromTo(
-        headingRef.current.querySelectorAll("h1, span"),
+        headingRef.current ? headingRef.current.querySelectorAll("h1, span") : [],
         {
           y: 30,
           opacity: 0,
@@ -94,7 +94,7 @@ const Hero = () => {
           "-=0.2"
         )
         .fromTo(
-          buttonsRef.current.children,
+          buttonsRef.current ? buttonsRef.current.children : [],
           {
             y: 20,
             opacity: 0,
