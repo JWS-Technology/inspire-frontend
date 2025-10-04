@@ -116,8 +116,8 @@ const NavbarDesktop = () => {
         <nav
             ref={navRef}
             className={`w-[97vw] rounded-4xl md:flex items-center justify-between bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50 transition-all duration-500 ${scrolled
-                    ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-[0.98] hover:scale-100"
-                    : "bg-gray-900"
+                ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-[0.80] hover:scale-85"
+                : "bg-gray-900"
                 }`}
         >
             {/* Logo */}
@@ -131,7 +131,7 @@ const NavbarDesktop = () => {
             </div> */}
             <div className="">
 
-            <Image className="scale-110 translate-x-3" height={ 5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+                <Image className="scale-110 translate-x-3" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
             </div>
 
             {/* Links */}
@@ -145,8 +145,8 @@ const NavbarDesktop = () => {
                         <span
                             data-label={link.label}
                             className={`cursor-pointer transition-all duration-300 ${activeLink === link.label
-                                    ? "text-amber-500 font-semibold"
-                                    : "hover:text-amber-500"
+                                ? "text-amber-500 font-semibold"
+                                : "hover:text-amber-500"
                                 }`}
                         >
                             {link.label}
