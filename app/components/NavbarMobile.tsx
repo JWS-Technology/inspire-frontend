@@ -37,10 +37,10 @@ const NavbarMobile: React.FC = () => {
     return (
         <nav
             ref={navRef}
-            className={`md:hidden ml-2 mr-2 rounded-4xl px-4 py-3 sticky top-0 z-50 transition-all duration-500 transform-gpu
+            className={`md:hidden rounded-4xl px-2 py-3 sticky top-0 z-50 transition-all duration-500 transform-gpu
         ${scrolled
                     ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-80"
-                    : "bg-gray-900 shadow-md scale-105 rounded-none -mt-3 "
+                    : "bg-gray-900 shadow-md scale-100 w-screen rounded-none "
                 }
             ${open ? "scale-100" : ""}`}
         >
