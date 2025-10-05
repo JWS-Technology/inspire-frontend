@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-
+import Image from "next/image";
 const NavbarMobile = () => {
     const [open, setOpen] = useState(false);
 
@@ -18,11 +18,14 @@ const NavbarMobile = () => {
         <nav className="md:hidden bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50">
             <div className="flex items-center justify-between">
                 {/* Logo */}
-                <div className="flex items-center space-x-2">
+                {/* <div className="flex items-center space-x-2">
                     <div className="bg-amber-500 text-white font-bold px-4 py-2 rounded-md">INSPIRE</div>
                     <span className="text-white font-semibold text-lg">SOFTECH</span>
-                </div>
+                </div> */}
+                <div className="">
 
+                    <Image className="scale-110 translate-x-3" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+                </div>
                 {/* Hamburger with rotation animation */}
                 <button
                     onClick={() => setOpen(!open)}
