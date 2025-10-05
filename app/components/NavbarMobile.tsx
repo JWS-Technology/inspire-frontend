@@ -32,17 +32,69 @@ const NavbarMobile: React.FC = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    // Click outside to close menu
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (open && navRef.current && !navRef.current.contains(event.target as Node)) {
+                setOpen(false);
+            }
+        };
 
+        // Escape key to close menu
+        const handleEscapeKey = (event: KeyboardEvent) => {
+            if (open && event.key === "Escape") {
+                setOpen(false);
+            }
+        };
+
+        if (open) {
+            document.addEventListener("mousedown", handleClickOutside);
+            document.addEventListener("keydown", handleEscapeKey);
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEscapeKey);
+            document.body.style.overflow = "unset";
+        };
+    }, [open]);
+
+    // Close menu when route changes (if using Next.js router)
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setOpen(false);
+        };
+
+        // If using Next.js, you can listen to route changes
+        // window.addEventListener('routeChangeComplete', handleRouteChange);
+
+        return () => {
+            // window.removeEventListener('routeChangeComplete', handleRouteChange);
+        };
+    }, []);
+
+    const handleLinkClick = () => {
+        setOpen(false);
+    };
+
+    const handleGetStartedClick = () => {
+        setOpen(false);
+        // Add your get started logic here
+    };
 
     return (
         <nav
             ref={navRef}
             className={`md:hidden rounded-4xl px-2 py-3 sticky top-0 z-50 transition-all duration-500 transform-gpu
-        ${scrolled
-                    ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-80 "
-                    : "bg-gray-900 shadow-md scale-100 w-screen rounded-none "
+                ${scrolled
+                    ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-80"
+                    : "bg-gray-900 shadow-md scale-100 w-screen rounded-none"
                 }
-            ${open ? "scale-90 px-7 py-6" : "px-5 py-4"}`}
+                ${open ? "scale-90 px-7 py-6" : "px-5 py-4"}`}
         >
             <div className="flex items-center justify-between">
                 {/* Logo */}
@@ -63,10 +115,10 @@ const NavbarMobile: React.FC = () => {
                     aria-label="Toggle navigation"
                     ref={buttonRef}
                     className={`
-            text-gray-200 hover:text-amber-500 focus:outline-none 
-            transition-all duration-600 text-2xl p-2 rounded-md
-            ${open ? "rotate-90" : "rotate-0"}
-          `}
+                        text-gray-200 hover:text-amber-500 focus:outline-none 
+                        transition-all duration-600 text-2xl p-2 rounded-md
+                        ${open ? "rotate-90 bg-gray-800" : "rotate-0"}
+                    `}
                 >
                     {open ? "✖" : "☰"}
                 </button>
@@ -75,25 +127,24 @@ const NavbarMobile: React.FC = () => {
             {/* Mobile Menu */}
             <div
                 className={`overflow-hidden transition-all duration-600 ease-out
-          ${open ? "max-h-[520px] opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
-        `}
+                    ${open ? "max-h-[520px] opacity-100 mt-4" : "max-h-0 opacity-0 mt-0"}
+                `}
             >
                 <div className="space-y-3">
                     {links.map((link, index) => {
-                        // choose Home as active by default; you can wire this to router if needed
                         const isHome = link.label === "Home";
 
                         return (
                             <a
                                 key={link.label}
                                 href={link.href}
-                                onClick={() => setOpen(false)}
+                                onClick={handleLinkClick}
                                 className={`
-                  block px-3 py-2 rounded-md transform transition-all duration-500 ease-out
-                  hover:bg-gray-800 active:bg-gray-700
-                  ${open ? "translate-x-0 opacity-100 scale-100" : "translate-x-8 opacity-0 scale-95"}
-                  ${isHome ? "text-amber-500 font-semibold bg-gray-800" : "text-white hover:text-amber-500"}
-                `}
+                                    block px-3 py-2 rounded-md transform transition-all duration-500 ease-out
+                                    hover:bg-gray-800 active:bg-gray-700
+                                    ${open ? "translate-x-0 opacity-100 scale-100" : "translate-x-8 opacity-0 scale-95"}
+                                    ${isHome ? "text-amber-500 font-semibold bg-gray-800" : "text-white hover:text-amber-500"}
+                                `}
                                 style={{
                                     transitionDelay: open ? `${index * 70}ms` : `${(links.length - index) * 40}ms`,
                                 }}
@@ -104,13 +155,13 @@ const NavbarMobile: React.FC = () => {
                     })}
 
                     <button
-                        onClick={() => setOpen(false)}
+                        onClick={handleGetStartedClick}
                         className={`
-              w-full bg-amber-500 hover:bg-yellow-600 text-white font-semibold 
-              px-4 py-2 rounded-md transform transition-all duration-500 ease-out
-              hover:scale-105 active:scale-95
-              ${open ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}
-            `}
+                            w-full bg-amber-500 hover:bg-yellow-600 text-white font-semibold 
+                            px-4 py-2 rounded-md transform transition-all duration-500 ease-out
+                            hover:scale-105 active:scale-95
+                            ${open ? "translate-y-0 opacity-100 scale-100" : "translate-y-8 opacity-0 scale-95"}
+                        `}
                         style={{
                             transitionDelay: open ? `${links.length * 75}ms` : "0ms",
                         }}
@@ -119,6 +170,14 @@ const NavbarMobile: React.FC = () => {
                     </button>
                 </div>
             </div>
+
+            {/* Overlay when menu is open */}
+            {open && (
+                <div
+                    className="fixed z-40 -translate-x-4 -translate-y-4 w-screen h-screen"
+                    onClick={() => setOpen(false)}
+                />
+            )}
         </nav>
     );
 };
