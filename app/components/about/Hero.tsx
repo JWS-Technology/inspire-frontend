@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Play, ArrowRight, Users, BookOpen, Globe, PhoneCall } from "lucide-react";
-
+import Image from "next/image";
 // Refined Hero Section — modern, premium visual style with elegant layout and contrast
 
 const AboutPageSimpleHero: React.FC = () => {
@@ -16,11 +16,20 @@ const AboutPageSimpleHero: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
                     {/* Left Image Section */}
                     <div className="relative group rounded-3xl overflow-hidden shadow-2xl">
+                        <Image
+                            src="https://edinztech.com/img/gallery/013f4.jpg"
+                            alt="Inspire Softech Event"
+                            width={800}
+                            height={500}
+                            priority
+                            className="w-full h-[420px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        {/* 
                         <img
                             src="https://edinztech.com/img/gallery/013f4.jpg"
                             alt="Inspire Softech Event"
                             className="w-full h-[420px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
+                        /> */}
                         {/* Overlay Button */}
                         <div className="absolute inset-0 flex items-center justify-center">
                             <button className="flex items-center gap-3 bg-white/90 backdrop-blur-md px-5 py-2 rounded-full shadow-lg hover:scale-105 transition">
