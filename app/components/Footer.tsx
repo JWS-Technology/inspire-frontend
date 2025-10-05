@@ -111,7 +111,7 @@ const Footer: React.FC = () => {
       {showButton && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 bg-amber-500 hover:bg-amber-600 text-black p-3 rounded-full shadow-lg transition-all duration-300"
+          className="fixed z-10 bottom-8 right-8 bg-amber-500 hover:bg-amber-600 text-black p-3 rounded-full shadow-lg transition-all duration-300"
           aria-label="Back to top"
         >
           <ArrowUp className="w-5 h-5" />
