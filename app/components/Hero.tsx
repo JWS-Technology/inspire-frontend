@@ -206,7 +206,7 @@ const Hero: React.FC = () => {
           <div ref={contentRef} className="relative z-30 max-w-3xl text-white">
             <div ref={headingRef}>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                INSPIRE SOFTECH <br />
+                Inspire Softech <br />
                 <span className="text-yellow-500">Group of Companies</span>
               </h1>
             </div>
