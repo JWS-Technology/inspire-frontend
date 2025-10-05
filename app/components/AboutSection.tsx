@@ -2,6 +2,7 @@
 
 import { BookOpen, GraduationCap, PhoneCall } from "lucide-react";
 import React from "react";
+import Image from "next/image";
 
 const AboutSection: React.FC = () => {
     return (
@@ -10,30 +11,40 @@ const AboutSection: React.FC = () => {
                 {/* LEFT SIDE - IMAGES */}
                 <div className="relative flex-1 flex flex-col items-center justify-center gap-4 md:gap-6 w-full md:w-1/2">
                     {/* Main large image */}
-                    <div className="rounded-2xl overflow-hidden shadow-md w-full md:w-[85%]">
-                        <img
-                            src="https://edinztech.com/img/gallery/013f4.jpg"
-                            alt="Students studying"
-                            className="object-cover w-full h-full"
-                        />
+                    <div className="rounded-2xl overflow-hidden shadow-md w-full md:w-[85%] relative">
+                        <div className="relative w-full h-[300px] md:h-[400px]">
+                            <Image
+                                src="https://edinztech.com/img/gallery/013f4.jpg"
+                                alt="Students studying"
+                                fill
+                                priority
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
                     </div>
 
                     {/* Floating circular image - Hidden on mobile, visible on md and up */}
                     <div className="absolute top-4 md:top-10 right-4 md:right-10 hidden md:block border-4 md:border-8 border-white rounded-full overflow-hidden shadow-lg w-24 h-24 md:w-48 md:h-48">
-                        <img
-                            src="https://edinztech.com/img/gallery/b70bb.jpeg"
-                            alt="Students collaborating"
-                            className="object-cover w-full h-full"
-                        />
+                        <div className="relative w-full h-full">
+                            <Image
+                                src="https://edinztech.com/img/gallery/b70bb.jpeg"
+                                alt="Students collaborating"
+                                fill
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
                     </div>
 
                     {/* Secondary rectangular image */}
                     <div className="hidden md:block rounded-2xl md:rounded-[30px] overflow-hidden shadow-md w-full md:w-[70%] md:ml-auto mt-4 md:mt-0">
-                        <img
-                            src="https://edinztech.com/img/gallery/c0349.jpeg"
-                            alt="Team discussion"
-                            className="object-cover w-full h-full"
-                        />
+                        <div className="relative w-full h-[180px] md:h-[220px]">
+                            <Image
+                                src="https://edinztech.com/img/gallery/c0349.jpeg"
+                                alt="Team discussion"
+                                fill
+                                className="object-cover w-full h-full"
+                            />
+                        </div>
                     </div>
 
                     {/* Floating stat badge */}
