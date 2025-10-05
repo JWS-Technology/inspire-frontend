@@ -11,17 +11,17 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement | null>(null);
 
-   useEffect(() => {
+    useEffect(() => {
         if (!sectionRef.current) return;
-        
+
         const ctx = gsap.context(() => {
             // INCREASED DURATION and DELAY for a smoother, slower overall animation
-            const tl = gsap.timeline({ 
-                paused: true, 
-                defaults: { 
+            const tl = gsap.timeline({
+                paused: true,
+                defaults: {
                     duration: 0.9, // INCREASED from 1s to 1.2s
                     ease: "power2.out" // Changed to power2.out for a smoother deceleration
-                }, 
+                },
                 delay: 0.4 // INCREASED from 0.25s for a noticeable start delay
             });
 
@@ -74,7 +74,7 @@ const AboutSection: React.FC = () => {
                 { autoAlpha: 1, y: 0, duration: 0.8, stagger: 0.2 }, // Stagger both CTA links
                 "-=0.6"
             );
-            
+
             // 7. Floating stat badge text/icon
             // Combined the badge text and icon animation into a single class for one smooth reveal
             tl.fromTo(
@@ -183,35 +183,49 @@ const AboutSection: React.FC = () => {
                     <div className="mb-6 md:mb-8">
                         <h4 className="font-semibold text-gray-800 mb-2 text-sm md:text-base gsap-subheading">Our Values</h4>
                         <ul className="flex flex-wrap gap-2 md:gap-3 text-gray-700 text-xs md:text-sm">
-                            <li className="bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Innovation</li>
-                            <li className="bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Integrity</li>
-                            <li className="bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Excellence</li>
-                            <li className="bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Collaboration</li>
+                            <div className="scaleAnimation">
+                                <li className=" bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Innovation</li>
+                            </div>
+                            <div className="scaleAnimation">
+                                <li className=" bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Integrity</li>
+                            </div>
+                            <div className="scaleAnimation">
+                                <li className=" bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Excellence</li>
+                            </div>
+                            <div className="scaleAnimation">
+                                <li className=" bg-gray-50 px-3 py-1 md:px-4 md:py-2 rounded-md gsap-list-item">Collaboration</li>
+                            </div>
                         </ul>
                     </div>
 
                     {/* CTA + Contact */}
                     <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 md:gap-5 border-t border-gray-200 pt-4 md:pt-6">
-                        <a
-                            href="#"
-                            className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-5 py-2 md:px-6 md:py-3 rounded-md shadow-md transition-all duration-200 flex items-center gap-2 text-sm md:text-base w-full sm:w-auto justify-center gsap-cta"
-                        >
-                            Discover More →
-                        </a>
+                        <div className="hover:scale-110 transition-all duration-300">
+                            <a
+                                href="#"
+                                className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-5 py-2 md:px-6 md:py-3 rounded-md shadow-md transition-all duration-200 flex items-center gap-2 text-sm md:text-base w-full sm:w-auto justify-center gsap-cta "
+                            >
+                                Discover More →
+                            </a>
 
-                        <a href="tel:+918667493679" className="w-full sm:w-auto gsap-cta">
-                            <div className="flex items-center gap-3">
-                                <div className="bg-green-100 p-2 md:p-3 rounded-full">
-                                    <PhoneCall className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+                        </div>
+                        <div className="hover:scale-110 transition-all duration-300">
+
+
+                            <a href="tel:+918667493679" className="w-full sm:w-auto gsap-cta">
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-green-100 p-2 md:p-3 rounded-full">
+                                        <PhoneCall className="w-5 h-5 md:w-6 md:h-6 text-green-600" />
+                                    </div>
+                                    <div>
+                                        <p className="text-gray-500 text-xs md:text-sm">Call Now</p>
+                                        <p className="font-semibold text-green-700 text-base md:text-lg">
+                                            +91 86674 93679
+                                        </p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-gray-500 text-xs md:text-sm">Call Now</p>
-                                    <p className="font-semibold text-green-700 text-base md:text-lg">
-                                        +91 86674 93679
-                                    </p>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
