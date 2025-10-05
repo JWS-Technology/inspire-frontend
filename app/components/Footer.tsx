@@ -12,15 +12,18 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* LEFT: Logo + tagline */}
           <div className="space-y-4">
-            <div className="flex items-center gap-4">
+            {/* <div className="flex items-center gap-4">
               <div className="bg-amber-500 text-black font-bold rounded-lg px-4 py-2 inline-flex items-center justify-center shadow-sm">
                 INSPIRE
               </div>
               <div className="text-white font-semibold tracking-wider hidden md:block">
                 SOFTECH
               </div>
-            </div>
+            </div> */}
+            <div className="">
 
+              <Image className="scale-110 translate-x-3" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+            </div>
             <p className="text-gray-400 italic max-w-[320px]">
               Empowering Growth through Knowledge &amp; Technology.
             </p>
