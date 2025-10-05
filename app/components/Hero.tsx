@@ -178,7 +178,7 @@ const Hero: React.FC = () => {
               loop
               playsInline
               preload="auto"
-              poster="/hero-poster.jpg"
+              poster="/hero-bg.jpg"
               aria-hidden="true"
             >
               <source src="/hero-video-low.mp4" type="video/mp4" />
@@ -188,7 +188,7 @@ const Hero: React.FC = () => {
             // fallback image used on server and initially on client
             <div
               className="absolute inset-0 bg-cover bg-center md:hidden"
-              style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+              style={{ backgroundImage: "url('https://edinztech.com/img/gallery/b70bb.jpeg')" }}
             />
           )}
 
