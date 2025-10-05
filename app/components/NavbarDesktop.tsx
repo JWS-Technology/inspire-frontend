@@ -2,8 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const NavbarDesktop = () => {
+    const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
     const [activeLink, setActiveLink] = useState("Home");
     const navRef = useRef<HTMLElement>(null);
@@ -28,6 +30,29 @@ const NavbarDesktop = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    useEffect(() => {
+    if (!pathname) return;
+
+    // Map pathname to your labels. If you keep foldered routes or dynamic routes,
+    // adjust mapping logic accordingly.
+    if (pathname === "/" || pathname === "") {
+      setActiveLink("Home");
+      return;
+    }
+
+    if (pathname.startsWith("/about")) {
+      setActiveLink("About Us");
+      return;
+    }
+
+    // add more page checks if you create more routes:
+    // if (pathname.startsWith("/companies")) { setActiveLink("Our Companies"); return; }
+
+    // Default fallback: clear selection for anchor-section pages
+    setActiveLink(""); 
+  }, [pathname]);
+
 
     // GSAP Animations - All elements with same animation
     useEffect(() => {
