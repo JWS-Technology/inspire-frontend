@@ -42,11 +42,7 @@ const companies = [
         description: "Technology Services & Solutions",
         about:
             "Delivering web, mobile and enterprise solutions for growing businesses.",
-        services: [
-            "Web & mobile apps",
-            "Enterprise software",
-            "Cloud & e-commerce",
-        ],
+        services: ["Web & mobile apps", "Enterprise software", "Cloud & e-commerce"],
     },
     {
         id: 3,
@@ -144,7 +140,9 @@ export default function OurCompaniesSimplePro() {
             { threshold: 0.18 }
         );
         obs.observe(el);
-        return () => obs.disconnect();
+        return () => {
+            obs.disconnect();
+        };
     }, []);
 
     // Entrance animation (headers -> cards -> stats -> particles)
@@ -223,8 +221,10 @@ export default function OurCompaniesSimplePro() {
             }
         }, containerRef);
 
-        // cleanup
-        return () => ctx.revert();
+        // cleanup — ensure we return a void-producing cleanup
+        return () => {
+            ctx.revert();
+        };
     }, [isVisible, prefersReducedMotion]);
 
     // overlay open/close animation (no page blur — overlay uses CSS backdrop-blur)
@@ -244,12 +244,7 @@ export default function OurCompaniesSimplePro() {
         const tl = gsap.timeline();
 
         if (open) {
-            tl.fromTo(
-                overlay,
-                { opacity: 0 },
-                { opacity: 1, duration: 0.36, ease: "power2.out" },
-                0
-            );
+            tl.fromTo(overlay, { opacity: 0 }, { opacity: 1, duration: 0.36, ease: "power2.out" }, 0);
             if (content)
                 tl.fromTo(
                     content,
@@ -258,15 +253,14 @@ export default function OurCompaniesSimplePro() {
                     0.04
                 );
         } else {
-            tl.to(
-                content,
-                { opacity: 0, y: 8, scale: 0.995, duration: 0.22, ease: "power2.in" },
-                0
-            );
+            tl.to(content, { opacity: 0, y: 8, scale: 0.995, duration: 0.22, ease: "power2.in" }, 0);
             tl.to(overlay, { opacity: 0, duration: 0.22, ease: "power2.in" }, 0.02);
         }
 
-        return () => tl.kill();
+        // cleanup — make sure to return a void-producing function
+        return () => {
+            tl.kill();
+        };
     }, [open, prefersReducedMotion]);
 
     // keyboard escape to close overlay
@@ -275,7 +269,9 @@ export default function OurCompaniesSimplePro() {
             if (e.key === "Escape") setOpen(null);
         };
         window.addEventListener("keydown", onKey);
-        return () => window.removeEventListener("keydown", onKey);
+        return () => {
+            window.removeEventListener("keydown", onKey);
+        };
     }, []);
 
     // hover handlers (instant tweens)
@@ -336,9 +332,7 @@ export default function OurCompaniesSimplePro() {
                 <div className="text-center mb-16">
                     <div className="section-header inline-flex items-center gap-3 mb-6 bg-white rounded-full px-6 py-3 shadow-lg border border-amber-100">
                         <Building2 className="w-5 h-5 text-amber-500" />
-                        <span className="text-sm font-semibold text-gray-700 tracking-wide">
-                            OUR COMPANIES
-                        </span>
+                        <span className="text-sm font-semibold text-gray-700 tracking-wide">OUR COMPANIES</span>
                         <Sparkles className="w-5 h-5 text-amber-500" />
                     </div>
 
@@ -349,21 +343,17 @@ export default function OurCompaniesSimplePro() {
                         </span>
                     </h1>
                     <p className="section-header text-gray-600 text-lg max-w-2xl mx-auto">
-                        Clear specializations, measurable outcomes — built for scale and
-                        innovation.
+                        Clear specializations, measurable outcomes — built for scale and innovation.
                     </p>
                 </div>
 
-                <div
-                    className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${isVisible ? "" : "opacity-0"
-                        }`}
-                >
+                <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 ${isVisible ? "" : "opacity-0"}`}>
                     {companies.map((c, index) => {
                         const colors = colorMap[c.color as keyof typeof colorMap];
                         const Icon = c.icon;
                         return (
                             <article
-                                ref={(el) => (cardsRef.current[index] = el)}
+                                ref={(el) => { cardsRef.current[index] = el as HTMLDivElement | null; }}
                                 key={c.id}
                                 className="company-card group bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500"
                                 onClick={() => setOpen(c.id)}
@@ -390,25 +380,11 @@ export default function OurCompaniesSimplePro() {
                                 </div>
 
                                 <div className="flex-1 min-w-0">
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">
-                                        {c.shortName}
-                                    </h3>
-                                    <p className="text-gray-600 mt-2 leading-relaxed">
-                                        {c.description}
-                                    </p>
+                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">{c.shortName}</h3>
+                                    <p className="text-gray-600 mt-2 leading-relaxed">{c.description}</p>
                                     <div className="mt-4 flex items-center gap-4">
-                                        <button
-                                            className="text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 group-hover:scale-105"
-                                            onClick={(e) => {
-                                                e.stopPropagation();
-                                                setOpen(c.id);
-                                            }}
-                                        >
-                                            Explore Details
-                                        </button>
-                                        <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">
-                                            {c.services.length} specialized services
-                                        </span>
+                                        <button className="text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 group-hover:scale-105" onClick={(e) => { e.stopPropagation(); setOpen(c.id); }}>Explore Details</button>
+                                        <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">{c.services.length} specialized services</span>
                                     </div>
                                 </div>
 
@@ -421,45 +397,19 @@ export default function OurCompaniesSimplePro() {
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
                     {[
-                        {
-                            value: "4",
-                            label: "Specialized Companies",
-                            color: "amber",
-                            icon: Target,
-                        },
+                        { value: "4", label: "Specialized Companies", color: "amber", icon: Target },
                         { value: "16+", label: "Core Services", color: "blue", icon: Zap },
-                        {
-                            value: "17+",
-                            label: "Years Excellence",
-                            color: "green",
-                            icon: Users,
-                        },
-                        {
-                            value: "1000+",
-                            label: "Projects Delivered",
-                            color: "purple",
-                            icon: Building2,
-                        },
+                        { value: "17+", label: "Years Excellence", color: "green", icon: Users },
+                        { value: "1000+", label: "Projects Delivered", color: "purple", icon: Building2 },
                     ].map((stat, idx) => {
                         const Icon = stat.icon;
                         return (
-                            <div
-                                key={idx}
-                                className="stat bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-500"
-                            >
-                                <div
-                                    className={`w-12 h-12 mx-auto mb-3 bg-${stat.color}-100 rounded-xl flex items-center justify-center`}
-                                >
+                            <div key={idx} className="stat bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-500">
+                                <div className={`w-12 h-12 mx-auto mb-3 bg-${stat.color}-100 rounded-xl flex items-center justify-center`}>
                                     <Icon className={`w-6 h-6 text-${stat.color}-600`} />
                                 </div>
-                                <div
-                                    className={`text-2xl font-bold text-${stat.color}-600 mb-1`}
-                                >
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-gray-600 font-medium">
-                                    {stat.label}
-                                </div>
+                                <div className={`text-2xl font-bold text-${stat.color}-600 mb-1`}>{stat.value}</div>
+                                <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
                             </div>
                         );
                     })}
@@ -470,11 +420,7 @@ export default function OurCompaniesSimplePro() {
             {open && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-auto">
                     {/* backdrop: semi-transparent + blur — only affects what's behind it */}
-                    <div
-                        ref={overlayRef}
-                        className="absolute inset-0 bg-black/55 backdrop-blur-md transition-all"
-                        onClick={() => setOpen(null)}
-                    />
+                    <div ref={overlayRef} className="absolute inset-0 bg-black/55 backdrop-blur-md transition-all" onClick={() => setOpen(null)} />
 
                     {/* dialog content (not blurred) — GSAP animates this for buttery effect */}
                     <div className="overlay-content relative max-w-4xl top-15 md:top-0 w-full mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden transform-gpu will-change-transform">
@@ -485,9 +431,7 @@ export default function OurCompaniesSimplePro() {
                                     const Icon = comp.icon;
                                     const colors = colorMap[comp.color as keyof typeof colorMap];
                                     return (
-                                        <div
-                                            className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${colors.gradient} flex items-center justify-center shadow-xl`}
-                                        >
+                                        <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${colors.gradient} flex items-center justify-center shadow-xl`}>
                                             <Icon className="w-10 h-10 text-white" />
                                         </div>
                                     );
@@ -495,60 +439,23 @@ export default function OurCompaniesSimplePro() {
                             </div>
 
                             <div className="flex-1 min-w-0">
-                                <h3
-                                    id="company-title"
-                                    className="text-2xl font-bold text-gray-900 mb-3"
-                                >
-                                    {companies.find((x) => x.id === open)!.name}
-                                </h3>
-                                <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                                    {companies.find((x) => x.id === open)!.about}
-                                </p>
+                                <h3 id="company-title" className="text-2xl font-bold text-gray-900 mb-3">{companies.find((x) => x.id === open)!.name}</h3>
+                                <p className="text-gray-600 text-lg leading-relaxed mb-6">{companies.find((x) => x.id === open)!.about}</p>
 
                                 <div className="mb-8">
-                                    <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                                        <Zap className="w-5 h-5 text-amber-500" />
-                                        Core Services
-                                    </h4>
+                                    <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2"><Zap className="w-5 h-5 text-amber-500" />Core Services</h4>
                                     <div className="grid md:grid-cols-2 gap-3">
-                                        {companies
-                                            .find((x) => x.id === open)!
-                                            .services.map((s, i) => (
-                                                <div
-                                                    key={i}
-                                                    className="p-4 rounded-xl bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-300"
-                                                >
-                                                    {s}
-                                                </div>
-                                            ))}
+                                        {companies.find((x) => x.id === open)!.services.map((s, i) => <div key={i} className="p-4 rounded-xl bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors duration-300">{s}</div>)}
                                     </div>
                                 </div>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <a
-                                        className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105"
-                                        href="#"
-                                        onClick={(e) => e.preventDefault()}
-                                    >
-                                        Explore Services <ExternalLink className="w-4 h-4" />
-                                    </a>
-                                    <a
-                                        className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105"
-                                        href="#"
-                                        onClick={(e) => e.preventDefault()}
-                                    >
-                                        Contact Team <ArrowRight className="w-4 h-4" />
-                                    </a>
+                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="#" onClick={(e) => e.preventDefault()}>Explore Services <ExternalLink className="w-4 h-4" /></a>
+                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="#" onClick={(e) => e.preventDefault()}>Contact Team <ArrowRight className="w-4 h-4" /></a>
                                 </div>
                             </div>
 
-                            <button
-                                className="absolute top-4 right-4 p-3 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-110"
-                                onClick={() => setOpen(null)}
-                                aria-label="Close dialog"
-                            >
-                                <X className="w-5 h-5 text-gray-600" />
-                            </button>
+                            <button className="absolute top-4 right-4 p-3 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-110" onClick={() => setOpen(null)} aria-label="Close dialog"><X className="w-5 h-5 text-gray-600" /></button>
                         </div>
                     </div>
                 </div>
