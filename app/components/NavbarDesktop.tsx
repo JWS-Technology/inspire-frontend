@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const NavbarDesktop = () => {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
-    const [activeLink, setActiveLink] = useState("Home");
+    const [activeLink, setActiveLink] = useState("");
     const navRef = useRef<HTMLElement>(null);
     const logoRef = useRef<HTMLDivElement>(null);
     const linksRef = useRef<HTMLUListElement>(null);
@@ -16,7 +16,7 @@ const NavbarDesktop = () => {
     const links = [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
-        { label: "Our Companies", href: "#" },
+        { label: "Our Companies", href: "/companies" },
         { label: "Services", href: "#" },
         { label: "Contact", href: "#" },
     ];
@@ -32,26 +32,31 @@ const NavbarDesktop = () => {
     }, []);
 
     useEffect(() => {
-    if (!pathname) return;
+        if (!pathname) return;
 
-    // Map pathname to your labels. If you keep foldered routes or dynamic routes,
-    // adjust mapping logic accordingly.
-    if (pathname === "/" || pathname === "") {
-      setActiveLink("Home");
-      return;
-    }
+        // Map pathname to your labels. If you keep foldered routes or dynamic routes,
+        // adjust mapping logic accordingly.
+        if (pathname === "/" || pathname === "") {
+            setActiveLink("Home");
+            return;
+        }
 
-    if (pathname.startsWith("/about")) {
-      setActiveLink("About Us");
-      return;
-    }
+        if (pathname.startsWith("/about")) {
+            setActiveLink("About Us");
+            return;
+        }
 
-    // add more page checks if you create more routes:
-    // if (pathname.startsWith("/companies")) { setActiveLink("Our Companies"); return; }
+        if (pathname.startsWith("/companies")) {
+            setActiveLink("Our Companies");
+            return;
+        }
 
-    // Default fallback: clear selection for anchor-section pages
-    setActiveLink(""); 
-  }, [pathname]);
+        // add more page checks if you create more routes:
+        // if (pathname.startsWith("/companies")) { setActiveLink("Our Companies"); return; }
+
+        // Default fallback: clear selection for anchor-section pages
+        setActiveLink("");
+    }, [pathname]);
 
 
     // GSAP Animations - All elements with same animation
