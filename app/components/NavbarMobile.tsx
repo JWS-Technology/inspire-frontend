@@ -7,15 +7,15 @@ const NavbarMobile = () => {
     const [open, setOpen] = useState(false);
 
     const links = [
-        { label: "Home", href: "#" },
-        { label: "About Us", href: "#" },
+        { label: "Home", href: "/" },
+        { label: "About Us", href: "/about" },
         { label: "Our Companies", href: "#" },
         { label: "Services", href: "#" },
         { label: "Contact", href: "#" },
     ];
 
     return (
-        <nav className="md:hidden bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50">
+        <nav className="md:hidden ml-2 mr-2 rounded-4xl bg-gray-900 px-6 py-4 shadow-md sticky top-0 z-50">
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 {/* <div className="flex items-center space-x-2">
@@ -24,7 +24,7 @@ const NavbarMobile = () => {
                 </div> */}
                 <div className="">
 
-                    <Image className="scale-110 translate-x-3" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+                    <Image className="scale-110 translate-x-3 -translate-y-0.5" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
                 </div>
                 {/* Hamburger with rotation animation */}
                 <button
