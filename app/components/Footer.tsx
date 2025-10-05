@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
                 <Link href="/" className="hover:text-amber-400">Home</Link>
               </li>
               <li>
-                <Link href="#about" className="hover:text-amber-400">About Us</Link>
+                <Link href="/about" className="hover:text-amber-400">About Us</Link>
               </li>
               <li>
                 <Link href="#companies" className="hover:text-amber-400">Companies</Link>
@@ -56,15 +56,19 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-semibold mb-4">Contact Us</h4>
 
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3">
-                <PhoneCall className="w-5 h-5 text-amber-400" aria-hidden />
-                <span>+91 93605 05768</span>
-              </li>
+              <a href="tel:+919360505768">
+                <li className="flex items-center gap-3 mb-3">
+                  <PhoneCall className="w-5 h-5 text-amber-400" aria-hidden />
+                  <span>+91 93605 05768</span>
+                </li>
+              </a>
 
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-amber-400" aria-hidden />
-                <span>+91 86674 93679</span>
-              </li>
+              <a href="tel:+918667493679">
+                <li className="flex items-center gap-3 mb-3">
+                  <Phone className="w-5 h-5 text-amber-400" aria-hidden />
+                  <span>+91 86674 93679</span>
+                </li>
+              </a>
 
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-amber-400" aria-hidden />
