@@ -355,7 +355,7 @@ export default function OurCompaniesSimplePro() {
                             <article
                                 ref={(el) => { cardsRef.current[index] = el as HTMLDivElement | null; }}
                                 key={c.id}
-                                className="company-card group bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500"
+                                className="company-card group opacity-0 bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500"
                                 onClick={() => setOpen(c.id)}
                                 onMouseEnter={() => handleCardHover(index)}
                                 onMouseLeave={() => handleCardLeave(index)}
@@ -371,7 +371,7 @@ export default function OurCompaniesSimplePro() {
                                         className={`flex-shrink-0 rounded-xl p-4 bg-gradient-to-r ${colors.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
                                         style={{ width: 64, height: 64 }}
                                     >
-                                        <Icon className="w-6 h-6 text-white" />
+                                        <Icon className="w-9 h-9 -translate-0.5  text-white" />
                                     </div>
                                     <div
                                         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"
@@ -400,7 +400,7 @@ export default function OurCompaniesSimplePro() {
                         { value: "4", label: "Specialized Companies", color: "amber", icon: Target },
                         { value: "16+", label: "Core Services", color: "blue", icon: Zap },
                         { value: "17+", label: "Years Excellence", color: "green", icon: Users },
-                        { value: "1000+", label: "Projects Delivered", color: "purple", icon: Building2 },
+                        { value: "1000+", label: "Projects Delivered", color: "amber", icon: Building2 },
                     ].map((stat, idx) => {
                         const Icon = stat.icon;
                         return (
@@ -450,8 +450,8 @@ export default function OurCompaniesSimplePro() {
                                 </div>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="#" onClick={(e) => e.preventDefault()}>Explore Services <ExternalLink className="w-4 h-4" /></a>
-                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="#" onClick={(e) => e.preventDefault()}>Contact Team <ArrowRight className="w-4 h-4" /></a>
+                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="/companies" >Explore Services <ExternalLink className="w-4 h-4" /></a>
+                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="/contact">Contact Team <ArrowRight className="w-4 h-4" /></a>
                                 </div>
                             </div>
 
