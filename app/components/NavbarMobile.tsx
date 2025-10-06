@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const NavbarMobile: React.FC = () => {
     const [open, setOpen] = useState(false);
@@ -14,7 +15,7 @@ const NavbarMobile: React.FC = () => {
     const links = [
         { label: "Home", href: "/" },
         { label: "About Us", href: "/about" },
-        { label: "Our Companies", href: "#" },
+        { label: "Our Companies", href: "/companies" },
         { label: "Services", href: "#" },
         { label: "Contact", href: "#" },
     ];
@@ -99,13 +100,14 @@ const NavbarMobile: React.FC = () => {
             <div className="flex items-center justify-between">
                 {/* Logo */}
                 <div ref={logoRef} className="flex items-center">
-                    <Image
+                    <Link href="/"> <Image
                         className="scale-90 translate-x-3 -translate-y-0.5"
                         height={30}
                         width={150}
                         src="https://edinztech.com/assets/img/inspire.png"
                         alt="logo"
                     />
+                    </Link>
                 </div>
 
                 {/* Hamburger with rotation */}

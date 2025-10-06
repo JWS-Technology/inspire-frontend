@@ -423,7 +423,7 @@ export default function OurCompaniesSimplePro() {
                     <div ref={overlayRef} className="absolute inset-0 bg-black/55 backdrop-blur-md transition-all" onClick={() => setOpen(null)} />
 
                     {/* dialog content (not blurred) — GSAP animates this for buttery effect */}
-                    <div className="overlay-content relative max-w-4xl top-15 md:top-0 w-full mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden transform-gpu will-change-transform">
+                    <div className="overlay-content relative max-w-4xl top-[10vh] md:top-0 w-full mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden transform-gpu will-change-transform">
                         <div className="p-8 flex flex-col md:flex-row gap-8">
                             <div className="flex-shrink-0">
                                 {(() => {
