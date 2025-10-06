@@ -18,7 +18,7 @@ const CompanyCards: React.FC<CompanyCardProps> = ({
   services,
 }) => {
   return (
-    <div className="w-[96vw] bg-white rounded-xl shadow-md border border-gray-100 p-6 md:p-8 transition-all duration-300 hover:shadow-lg">
+    <div className="w-[96vw] bg-white rounded-xl shadow-lg border-b-3 border-gray-200 p-6 md:p-8 transition-all duration-300 hover:shadow-lg">
       <div className="flex flex-col sm:flex-row items-start gap-5">
         {/* ICON */}
         <div className="flex-shrink-0">
