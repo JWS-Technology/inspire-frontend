@@ -220,11 +220,11 @@ const Hero: React.FC = () => {
               to empower individuals and organizations worldwide
             </p>
 
-            <div ref={buttonsRef} className="mt-8 opacity-0 flex flex-col md:flex-row gap-4 justify-center">
+            <div ref={buttonsRef} className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
               <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
                 Explore Our Companies →
               </button>
-              <button className="bg-gray-800 opacity-0 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
+              <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
                 Discover Our Services
               </button>
             </div>
