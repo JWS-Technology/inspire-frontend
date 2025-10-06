@@ -72,26 +72,44 @@ const colorMap = {
         soft: "amber-50",
         gradient: "from-amber-500 to-yellow-500",
         light: "amber-100",
+        hoverText: "group-hover:text-amber-500",
+        hoverBorder: "hover:border-amber-500",
+        hoverShadow: "hover:shadow-amber-200/50",
+        hoverBg: "hover:bg-amber-500/3",
     },
     blue: {
         accent: "blue-500",
         soft: "blue-50",
         gradient: "from-blue-500 to-cyan-500",
         light: "blue-100",
+        hoverText: "group-hover:text-blue-500",
+        hoverBorder: "hover:border-blue-500",
+        hoverShadow: "hover:shadow-blue-200/50",
+        hoverBg: "hover:bg-blue-500/3",
     },
     green: {
         accent: "green-500",
         soft: "green-50",
         gradient: "from-green-500 to-emerald-500",
         light: "green-100",
+        hoverText: "group-hover:text-green-500",
+        hoverBorder: "hover:border-green-500",
+        hoverShadow: "hover:shadow-green-200/50",
+        hoverBg: "hover:bg-green-500/3",
     },
     purple: {
         accent: "purple-500",
         soft: "purple-50",
         gradient: "from-purple-500 to-violet-500",
         light: "purple-100",
+        hoverText: "group-hover:text-purple-500",
+        hoverBorder: "hover:border-purple-500",
+        hoverShadow: "hover:shadow-purple-200/50",
+        hoverBg: "hover:bg-purple-500/3",
     },
 } as const;
+
+
 
 export default function OurCompaniesSimplePro() {
     const [open, setOpen] = useState<number | null>(null);
@@ -355,7 +373,7 @@ export default function OurCompaniesSimplePro() {
                             <article
                                 ref={(el) => { cardsRef.current[index] = el as HTMLDivElement | null; }}
                                 key={c.id}
-                                className="company-card group opacity-0 bg-white rounded-2xl border border-gray-200 shadow-lg hover:shadow-2xl p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500"
+                                className={`company-card group opacity-0 bg-white rounded-2xl border border-gray-200 shadow-lg p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500 hover:shadow-xl ${colors.hoverBorder} ${colors.hoverBg} ${colors.hoverShadow}`}
                                 onClick={() => setOpen(c.id)}
                                 onMouseEnter={() => handleCardHover(index)}
                                 onMouseLeave={() => handleCardLeave(index)}
@@ -388,7 +406,7 @@ export default function OurCompaniesSimplePro() {
                                     </div>
                                 </div>
 
-                                <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1" />
+                                <ArrowRight className={`w-5 h-5 text-gray-400 ${colors.hoverText} group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1`} />
                             </article>
                         );
                     })}
@@ -403,8 +421,10 @@ export default function OurCompaniesSimplePro() {
                         { value: "1000+", label: "Projects Delivered", color: "amber", icon: Building2 },
                     ].map((stat, idx) => {
                         const Icon = stat.icon;
+                        const statColors = colorMap[stat.color as keyof typeof colorMap];
                         return (
-                            <div key={idx} className="stat bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-500">
+                            <div key={idx} className={`stat bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-200 transition-all duration-500 hover:scale-105 ${statColors.hoverBg} ${statColors.hoverBorder} ${statColors.hoverShadow}`}
+                            >
                                 <div className={`w-12 h-12 mx-auto mb-3 bg-${stat.color}-100 rounded-xl flex items-center justify-center`}>
                                     <Icon className={`w-6 h-6 text-${stat.color}-600`} />
                                 </div>
@@ -451,7 +471,7 @@ export default function OurCompaniesSimplePro() {
 
                                 <div className="flex flex-wrap gap-4">
                                     <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="/companies" >Explore Services <ExternalLink className="w-4 h-4" /></a>
-                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="/contact">Contact Team <ArrowRight className="w-4 h-4" /></a>
+                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="/contact">Contact Team <ArrowRight className="w-4 h-4 " /></a>
                                 </div>
                             </div>
 
