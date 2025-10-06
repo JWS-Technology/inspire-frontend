@@ -72,7 +72,7 @@ const Page: React.FC = () => {
                     <h2 className="text-3xl md:text-6xl font-extrabold text-gray-900">
                         Our <span className="text-yellow-500">Companies</span>
                     </h2>
-                    <p className="text-gray-600 mt-3 text-base md:text-xl max-w-2xl mx-auto">
+                    <p className="text-gray-600 mt-3 text-base px-0.5 md:text-xl max-w-2xl mx-auto">
                         Four specialized companies working together to deliver comprehensive
                         technology and training solutions
                     </p>
