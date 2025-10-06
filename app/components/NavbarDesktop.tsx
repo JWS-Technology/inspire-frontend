@@ -3,8 +3,12 @@ import React, { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import type { NavLink } from "./Navbar";
 
-const NavbarDesktop = () => {
+type Props = {
+    links: NavLink[];
+};
+const NavbarDesktop: React.FC<Props> = ({ links }) => {
     const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
     const [activeLink, setActiveLink] = useState("");
@@ -13,13 +17,7 @@ const NavbarDesktop = () => {
     const linksRef = useRef<HTMLUListElement>(null);
     const buttonRef = useRef<HTMLButtonElement>(null);
 
-    const links = [
-        { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
-        { label: "Our Companies", href: "/companies" },
-        { label: "Services", href: "#" },
-        { label: "Contact", href: "#" },
-    ];
+
 
     useEffect(() => {
         const handleScroll = () => {

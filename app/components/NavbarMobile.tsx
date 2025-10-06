@@ -3,22 +3,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { NavLink } from "./Navbar";
 
-const NavbarMobile: React.FC = () => {
+type Props = {
+    links: NavLink[];
+};
+
+const NavbarMobile: React.FC<Props> = ({ links }) => {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     const navRef = useRef<HTMLElement | null>(null);
     const logoRef = useRef<HTMLDivElement | null>(null);
     const buttonRef = useRef<HTMLButtonElement | null>(null);
-
-    const links = [
-        { label: "Home", href: "/" },
-        { label: "About Us", href: "/about" },
-        { label: "Our Companies", href: "/companies" },
-        { label: "Services", href: "#" },
-        { label: "Contact", href: "#" },
-    ];
 
     // Scroll listener to toggle scrolled state
     useEffect(() => {
@@ -92,7 +89,7 @@ const NavbarMobile: React.FC = () => {
             ref={navRef}
             className={`md:hidden rounded-4xl px-2 py-3 sticky top-0 z-50 transition-all duration-500 transform-gpu
                 ${scrolled
-                    ? "bg-gray-900/70 backdrop-blur-md shadow-xl scale-80"
+                    ? "bg-gray-900/78 backdrop-blur-[6px] shadow-xl scale-80"
                     : "bg-gray-900 backdrop-blur-lg shadow-md scale-100 w-screen rounded-none"
                 }
                 ${open ? "scale-90 bg-gray-900/95 px-7 py-6" : "px-5 py-4"}`}
