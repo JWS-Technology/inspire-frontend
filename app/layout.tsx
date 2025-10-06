@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Raleway } from "next/font/google";
 import "./globals.css";
+import keywords from "./seo/home-keywords.json"
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -22,20 +23,7 @@ export const metadata: Metadata = {
   title: "INSPIRE SOFTECH Group of Companies",
   description:
     "INSPIRE SOFTECH Group of Companies – Empowering Growth through Knowledge & Technology. Bringing together Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions, and Igrean StarTech Solutions under one umbrella.",
-  keywords: [
-    "Inspire Softech",
-    "Edinz Tech",
-    "Adore Technology",
-    "Igrean StarTech",
-    "AICTE Internships",
-    "Skill Development",
-    "Web Development",
-    "Enterprise Solutions",
-    "AI and IoT",
-    "Cloud Technology",
-    "Data Science",
-    "IT Consulting",
-  ],
+  keywords,
   authors: [{ name: "INSPIRE SOFTECH Group of Companies" }],
   creator: "INSPIRE SOFTECH Group",
   publisher: "INSPIRE SOFTECH Group",
