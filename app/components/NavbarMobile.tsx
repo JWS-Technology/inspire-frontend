@@ -91,10 +91,10 @@ const NavbarMobile: React.FC = () => {
             ref={navRef}
             className={`md:hidden rounded-4xl px-2 py-3 sticky top-0 z-50 transition-all duration-500 transform-gpu
                 ${scrolled
-                    ? "bg-gray-900/95 backdrop-blur-sm shadow-xl scale-80"
-                    : "bg-gray-900 shadow-md scale-100 w-screen rounded-none"
+                    ? "bg-gray-900/70 backdrop-blur-md shadow-xl scale-80"
+                    : "bg-gray-900 backdrop-blur-lg shadow-md scale-100 w-screen rounded-none"
                 }
-                ${open ? "scale-90 px-7 py-6" : "px-5 py-4"}`}
+                ${open ? "scale-90 bg-gray-900/95 px-7 py-6" : "px-5 py-4"}`}
         >
             <div className="flex items-center justify-between">
                 {/* Logo */}
