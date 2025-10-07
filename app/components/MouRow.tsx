@@ -4,218 +4,107 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-type Logo = {
+type Item = { name: string; logo: string };
+
+type RowConfig = {
     id: string;
-    src: string;
-    alt: string;
-    gradient?: string;
+    items: Item[];
+    label: string;
+    color: string;
+    reverse?: boolean;
 };
 
-const logos: Logo[] = [
+// --- EDIT THESE ARRAYS (logo path is relative to `public/logos/`) ---
+const rows: RowConfig[] = [
     {
-        id: "St. Joseph's College, Trichy",
-        src: "/logos/sjc.png",
-        alt: "SJC",
-        gradient: "from-blue-500/10 to-purple-500/10"
+        id: "corporate",
+        label: "Corporate Clients",
+        color: "from-blue-500 to-blue-600",
+        items: [
+            { name: "HCL", logo: "corporate-clients/hcl.png" },
+            { name: "Besmak", logo: "corporate-clients/besmak.jpg" },
+            { name: "Blue Star", logo: "corporate-clients/blue star.png" },
+            { name: "Cognizant", logo: "corporate-clients/cognizant.jpg" },
+        ],
+        reverse: false,
     },
     {
-        id: "St. Joseph's College of Engineering",
-        src: "/logos/sjc.png",
-        alt: "SJC Engineering",
-        gradient: "from-green-500/10 to-cyan-500/10"
+        id: "government",
+        label: "Government Sector — Prime Clients",
+        color: "from-emerald-500 to-emerald-600",
+        items: [
+            {
+                name: "Advanced Training Institute - Government of India",
+                logo: "Government Sector Prime  Clients/advanced training institute.png",
+            },
+            { name: "CPCL", logo: "Government Sector Prime  Clients/CPCL.png" },
+            {
+                name: "Integral Coach Factory",
+                logo: "Government Sector Prime  Clients/integral coach factory.png",
+            },
+            // { name: "Southern Railway", logo: "Government Sector Prime  Clients/southern railway.png" },
+        ],
+        reverse: true,
     },
     {
-        id: "St. Joseph's Institute of Technology",
-        src: "/logos/sjc.png",
-        alt: "SJC Tech",
-        gradient: "from-orange-500/10 to-red-500/10"
-    },
-    {
-        id: "St. Joseph's Business School",
-        src: "/logos/sjc.png",
-        alt: "SJC Business",
-        gradient: "from-purple-500/10 to-pink-500/10"
+        id: "education",
+        label: "Educational Institutions",
+        color: "from-violet-500 to-violet-600",
+        items: [
+            // add your education partners here
+        ],
+        reverse: false,
     },
 ];
 
-export default function LogoRowMarquee() {
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const marqueeRef = useRef<HTMLDivElement | null>(null);
-    const tlRef = useRef<gsap.core.Timeline | null>(null);
-
-    useEffect(() => {
-        const marquee = marqueeRef.current;
-        const container = containerRef.current;
-        if (!marquee || !container) return;
-
-        const resizeAndAnimate = () => {
-            if (tlRef.current) {
-                tlRef.current.kill();
-                tlRef.current = null;
-            }
-
-            const totalWidth = marquee.scrollWidth;
-            const singleWidth = totalWidth / 2 || totalWidth;
-
-            if (singleWidth === 0) return;
-
-            const speedPxPerSec = 40;
-            const duration = Math.max(12, singleWidth / speedPxPerSec);
-
-            const ctx = gsap.context(() => {
-                tlRef.current = gsap.timeline({
-                    repeat: -1,
-                    defaults: { ease: "power1.inOut" },
-                });
-
-                gsap.set(marquee, { x: 0 });
-
-                tlRef.current
-                    .fromTo(marquee,
-                        { x: 0 },
-                        {
-                            x: -singleWidth,
-                            duration,
-                            ease: "power1.inOut",
-                        }
-                    );
-
-                // Add subtle scale animation to logos
-                tlRef.current.fromTo(marquee.children,
-                    { scale: 0.98 },
-                    { scale: 1, duration: 3, ease: "power2.out" },
-                    0
-                );
-            }, container);
-        };
-
-        const onLoad = () => {
-            window.setTimeout(resizeAndAnimate, 50);
-        };
-
-        onLoad();
-
-        const onResize = () => {
-            if ((window as any).__logoMarqueeResizeTid) {
-                window.clearTimeout((window as any).__logoMarqueeResizeTid);
-            }
-            (window as any).__logoMarqueeResizeTid = window.setTimeout(() => {
-                resizeAndAnimate();
-            }, 120);
-        };
-
-        window.addEventListener("resize", onResize);
-        window.addEventListener("orientationchange", onResize);
-
-        const imgs = Array.from(marquee.querySelectorAll("img"));
-        let loadedCount = 0;
-        const onImgLoad = () => {
-            loadedCount++;
-            if (loadedCount === imgs.length) {
-                resizeAndAnimate();
-            }
-        };
-        imgs.forEach((img) => {
-            if ((img as HTMLImageElement).complete) {
-                onImgLoad();
-            } else {
-                img.addEventListener("load", onImgLoad, { once: true });
-                img.addEventListener("error", onImgLoad, { once: true });
-            }
-        });
-
-        return () => {
-            if (tlRef.current) {
-                tlRef.current.kill();
-                tlRef.current = null;
-            }
-            window.removeEventListener("resize", onResize);
-            window.removeEventListener("orientationchange", onResize);
-        };
-    }, []);
-
-    const handleHoverStart = () => {
-        if (tlRef.current) {
-            tlRef.current.timeScale(0.4);
-        }
-    };
-
-    const handleHoverEnd = () => {
-        if (tlRef.current) {
-            tlRef.current.timeScale(1);
-        }
-    };
-
+export default function ThreeStreamLogoMarquee() {
     return (
         <section className="w-full py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100 overflow-hidden relative">
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute -top-32 -left-32 w-80 h-80 bg-gradient-to-r from-blue-100/40 to-transparent rounded-full blur-3xl"></div>
-                <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-gradient-to-l from-purple-100/40 to-transparent rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-100/20 to-blue-100/20 rounded-full blur-3xl"></div>
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30" />
+                <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-100 rounded-full blur-3xl opacity-30" />
             </div>
 
-            <div className="max-w-8xl mx-auto px-6 relative z-10">
-                {/* Section header */}
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-3 mb-4">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <span className="text-sm font-semibold text-blue-600 uppercase tracking-wider">Our Partners</span>
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    <div className="inline-flex items-center gap-3 px-4 py-2 bg-white rounded-full shadow-sm border border-slate-200 mb-6">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+                        <span className="text-sm font-medium text-slate-700">
+                            Our Ecosystem
+                        </span>
                     </div>
-                    <h2 className="text-5xl font-bold bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 bg-clip-text text-transparent mb-6">
-                        Trusted Institutions
+
+                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                        Strategic{" "}
+                        <span className="bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent">
+                            Partnership Streams
+                        </span>
                     </h2>
-                    <p className="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed font-light">
-                        Collaborating with prestigious educational institutions worldwide to deliver excellence
+
+                    <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                        Three dedicated streams serving corporate, government, and education
+                        sectors with tailored solutions and trusted partners.
                     </p>
                 </div>
 
-                {/* Marquee container with enhanced gradient overlays */}
-                <div className="relative">
-                    {/* Left gradient fade with shine effect */}
-                    <div className="absolute left-0 top-0 w-40 h-full bg-gradient-to-r from-slate-50/95 via-slate-50/50 to-transparent z-20 pointer-events-none">
-                        <div className="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
-                    </div>
-
-                    {/* Right gradient fade with shine effect */}
-                    <div className="absolute right-0 top-0 w-40 h-full bg-gradient-to-l from-slate-50/95 via-slate-50/50 to-transparent z-20 pointer-events-none">
-                        <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-white to-transparent"></div>
-                    </div>
-
-                    {/* Main marquee container */}
-                    <div
-                        ref={containerRef}
-                        className="relative overflow-hidden rounded-3xl bg-whi te/60 backdro p-blur-md transition-shadow duration-500"
-                        onMouseEnter={handleHoverStart}
-                        onMouseLeave={handleHoverEnd}
-                        aria-hidden={false}
-                    >
-                        {/* Marquee wrapper */}
-                        <div
-                            ref={marqueeRef}
-                            className="flex items-center gap-10 whitespace-nowrap will-change-transform py-4"
-                            style={{ alignItems: "center" }}
-                            aria-label="Scrolling partner logos"
-                        >
-                            {/* First set */}
-                            {logos.map((logo, index) => (
-                                <Tile key={`a-${logo.id}`} logo={logo} index={index} />
-                            ))}
-                            {/* Second set (duplicate) */}
-                            {logos.map((logo, index) => (
-                                <Tile key={`b-${logo.id}`} logo={logo} index={index} />
-                            ))}
-                        </div>
-                    </div>
+                <div className="space-y-8">
+                    {rows.map((row, i) => (
+                        <MarqueeRow key={row.id} config={row} index={i} />
+                    ))}
                 </div>
 
-                {/* Decorative footer */}
-                <div className="flex justify-center mt-12">
-                    <div className="flex items-center gap-2 text-slate-400">
-                        <div className="w-16 h-px bg-gradient-to-r from-transparent to-slate-300"></div>
-                        <span className="text-xs font-medium">Scroll to Explore</span>
-                        <div className="w-16 h-px bg-gradient-to-l from-transparent to-slate-300"></div>
+                <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/60 shadow-sm">
+                        <div className="text-2xl font-bold text-blue-600 mb-2">200+</div>
+                        <div className="text-slate-600">Enterprise Clients</div>
+                    </div>
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/60 shadow-sm">
+                        <div className="text-2xl font-bold text-emerald-600 mb-2">50+</div>
+                        <div className="text-slate-600">Government Projects</div>
+                    </div>
+                    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/60 shadow-sm">
+                        <div className="text-2xl font-bold text-violet-600 mb-2">100+</div>
+                        <div className="text-slate-600">Education Partners</div>
                     </div>
                 </div>
             </div>
@@ -223,84 +112,225 @@ export default function LogoRowMarquee() {
     );
 }
 
-function Tile({ logo, index }: { logo: Logo; index: number }) {
-    const tileRef = useRef<HTMLDivElement>(null);
+/* Replace your MarqueeRow and LogoTile with this code (drop-in) */
 
-    const handleHover = () => {
-        if (tileRef.current) {
-            gsap.to(tileRef.current, {
-                y: -6,
-                scale: 1.03,
-                duration: 0.3,
-                ease: "back.out(1.7)",
+function MarqueeRow({ config, index }: { config: RowConfig; index: number }) {
+    const trackRef = useRef<HTMLDivElement | null>(null);
+    const tlRef = useRef<gsap.core.Tween | null>(null);
+
+    useEffect(() => {
+        const track = trackRef.current;
+        if (!track) return;
+
+        let destroyed = false;
+
+        // helper: wait for all images inside track to settle (load or error)
+        const waitForImages = () => {
+            const imgs = Array.from(
+                track.querySelectorAll("img")
+            ) as HTMLImageElement[];
+            if (imgs.length === 0) return Promise.resolve();
+            return Promise.all(
+                imgs.map(
+                    (img) =>
+                        new Promise<void>((resolve) => {
+                            if (img.complete) return resolve();
+                            const onDone = () => {
+                                img.removeEventListener("load", onDone);
+                                img.removeEventListener("error", onDone);
+                                resolve();
+                            };
+                            img.addEventListener("load", onDone);
+                            img.addEventListener("error", onDone);
+                        })
+                )
+            );
+        };
+
+        const start = async () => {
+            await waitForImages();
+            if (destroyed || !track) return;
+
+            // kill old tween
+            if (tlRef.current) {
+                try {
+                    tlRef.current.kill();
+                } catch (e) { }
+                tlRef.current = null;
+            }
+
+            // measure width of a single set (we duplicated items in markup)
+            const singleWidth = track.scrollWidth / 2;
+            if (!singleWidth || singleWidth <= 0) return;
+
+            // px per second speed (tweak base or per-row)
+            const speedPxPerSec = 80 + index * 10;
+            const duration = Math.max(6, Math.abs(singleWidth) / speedPxPerSec);
+
+            const direction = config.reverse ? 1 : -1; // -1 => animate left (0 -> -singleWidth)
+
+            // reset to 0 then animate
+            gsap.set(track, { x: 0 });
+
+            // Use gsap.utils.wrap to keep x inside the looping range.
+            // For leftwards motion animate from 0 -> -singleWidth and wrap into [-singleWidth, 0)
+            const wrapFn = gsap.utils.wrap(
+                direction < 0 ? -singleWidth : 0,
+                direction < 0 ? 0 : singleWidth
+            );
+
+            tlRef.current = gsap.to(track, {
+                x: direction * singleWidth,
+                duration,
+                ease: "none",
+                repeat: -1,
+                modifiers: {
+                    x: (x: string) => {
+                        // parse current x, wrap it, and return px string
+                        const val = parseFloat(x) || 0;
+                        return wrapFn(val) + "px";
+                    },
+                },
             });
-        }
+        };
+
+        // start and restart on resize
+        start();
+        const onResize = () => {
+            if (tlRef.current) {
+                try {
+                    tlRef.current.kill();
+                } catch (e) { }
+                tlRef.current = null;
+            }
+            // slight delay so layout stabilizes
+            window.clearTimeout((window as any).__marqueeResizeTid);
+            (window as any).__marqueeResizeTid = window.setTimeout(() => {
+                start();
+            }, 120);
+        };
+        window.addEventListener("resize", onResize);
+        window.addEventListener("orientationchange", onResize);
+
+        return () => {
+            destroyed = true;
+            if (tlRef.current) {
+                try {
+                    tlRef.current.kill();
+                } catch (e) { }
+                tlRef.current = null;
+            }
+            window.removeEventListener("resize", onResize);
+            window.removeEventListener("orientationchange", onResize);
+        };
+        // stable dependency array length & order
+    }, [config.items.length, config.reverse, index]);
+
+    const handleEnter = () => {
+        if (tlRef.current)
+            gsap.to(tlRef.current, { timeScale: 0.25, duration: 0.4 });
     };
-
-    const handleHoverExit = () => {
-        if (tileRef.current) {
-            gsap.to(tileRef.current, {
-                y: 0,
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out",
-            });
-        }
+    const handleLeave = () => {
+        if (tlRef.current) gsap.to(tlRef.current, { timeScale: 1, duration: 0.4 });
     };
 
     return (
-        <div
-            ref={tileRef}
-            className="flex-shrink-0 w-80 h-32 bg-gradient-to-br from-white/95 to-white/85 rounded-2xl shadow-md hover:shadow-xl border border-white/80 backdrop-blur-sm flex items-center px-7 transition-all duration-400 hover:border-blue-200/60 relative overflow-hidden group cursor-pointer"
-            role="img"
-            aria-label={logo.alt}
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHoverExit}
-        >
-            {/* Animated background gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-br ${logo.gradient} opacity-0 group-hover:opacity-100 transition-all duration-500`}></div>
-
-            {/* Shine effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -skew-x-12 translate-x-[-150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-out"></div>
-
-            {/* Glow effect */}
-            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-blue-500/5 blur-md"></div>
-
-            {/* Content */}
-            <div className="flex items-center gap-6 w-full relative z-10">
-                {/* Logo container with enhanced styling */}
-                <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center bg-white rounded-xl shadow-sm group-hover:shadow-md transition-all duration-500 group-hover:scale-110 border border-slate-100/80 relative overflow-hidden">
-                    {/* Logo background shine */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-white to-slate-50/80"></div>
-                    <Image
-                        src={logo.src}
-                        alt={logo.alt}
-                        width={60}
-                        height={60}
-                        style={{
-                            objectFit: "contain",
-                        }}
-                        className="transition-transform duration-500 group-hover:scale-110 relative z-10 drop-shadow-sm"
-                        priority={index < 4}
-                    />
-                </div>
-
-                {/* Text content */}
-                <div className="flex-1 min-w-0">
-                    <h2 className="text-[16px] font-semibold bg-gradient-to-r from-slate-800 to-slate-700 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-purple-700 transition-all duration-500 leading-tight whitespace-normal line-clamp-2">
-                        {logo.id}
-                    </h2>
-                    <p className="text-xs text-slate-500 mt-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-500 delay-75 font-medium">
-                        Premier Education Partner
-                    </p>
-                </div>
-
-                {/* Hover indicator arrow */}
-                <div className="opacity-0 group-hover:opacity-100 transition-all duration-500 delay-150 transform translate-x-2 group-hover:translate-x-0">
-                    <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                        <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+        <div className="group">
+            {/* header same as before */}
+            <div className="flex items-center justify-between mb-4 px-2">
+                <div className="flex items-center gap-3">
+                    <div
+                        className={`w-12 h-12 rounded-xl bg-gradient-to-br ${config.color} flex items-center justify-center text-white text-lg shadow-lg transform group-hover:scale-110 transition-transform duration-300`}
+                    >
+                        <svg
+                            className="w-6 h-6"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M4 12h16"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                            />
                         </svg>
+                    </div>
+                    <div>
+                        <h4 className="text-lg font-bold text-slate-800">{config.label}</h4>
+                        <div className="flex items-center gap-2">
+                            <div className="w-16 h-1 bg-gradient-to-r from-slate-300 to-transparent rounded-full" />
+                            <span className="text-xs text-slate-500">Active stream</span>
+                        </div>
+                    </div>
+                </div>
+                <span className="text-xs text-slate-400 bg-white/80 px-3 py-1 rounded-full border border-slate-200">
+                    ✨ Hover to slow
+                </span>
+            </div>
+
+            <div
+                className="relative overflow-hidden rounded-2xl bg-white/80 backdrop-blur-sm border border-white/60 shadow-lg hover:shadow-xl transition-all duration-500"
+                onMouseEnter={handleEnter}
+                onMouseLeave={handleLeave}
+            >
+                <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-white via-white/95 to-transparent z-20 pointer-events-none" />
+                <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-white via-white/95 to-transparent z-20 pointer-events-none" />
+                <div
+                    className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${config.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 -z-10`}
+                />
+
+                <div
+                    ref={trackRef}
+                    className="flex items-center gap-8 whitespace-nowrap py-6 px-8 will-change-transform"
+                >
+                    {[...config.items, ...config.items].map((it, idx) => (
+                        <LogoTile key={`${config.id}-${idx}`} item={it} />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function LogoTile({ item }: { item: Item }) {
+    // encode URI to handle spaces / special chars
+    const src = encodeURI(`/logos/${item.logo}`);
+
+    return (
+        <div className="flex-shrink-0 min-w-[22rem] md:min-w-[24rem] lg:min-w-[26rem] group/tile">
+            <div className="px-5 py-4 bg-white rounded-xl shadow-md border border-slate-200/80 hover:border-slate-300 transform transition-all duration-500 hover:scale-[1.03] hover:shadow-lg backdrop-blur-sm">
+                <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center shadow-inner overflow-hidden">
+                        {/* During dev, if next/image complains, you can add unoptimized to Image */}
+                        <Image
+                            src={src}
+                            alt={item.name}
+                            width={56}
+                            height={56}
+                            style={{ objectFit: "contain" }}
+                            className="relative z-10"
+                        />
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                        <div className="text-base font-semibold text-slate-800 leading-tight mb-1">
+                            {item.name}
+                        </div>
+                        <div className="flex items-center justify-between">
+                            <span className="text-xs text-slate-500 font-medium">
+                                Premium partnership
+                            </span>
+                            <div className="flex items-center gap-1">
+                                <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                                <span className="text-xs text-slate-400">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="opacity-0 group-hover/tile:opacity-100 transform group-hover/tile:translate-x-1 transition-all duration-300 text-slate-400">
+                        →
                     </div>
                 </div>
             </div>
