@@ -7,6 +7,9 @@ import HowWeWork from '../components/ourServices/HowWeWork'
 import ServiceCategories from '../components/ourServices/ServiceCategories'
 import SuccessStories from '../components/ourServices/SuccessStories'
 import ServicePortfolio from '../components/ourServices/ServicePortfolio'
+import FAQ from '../components/ourServices/FAQ'
+import Testimonials from '../components/ourServices/Testimonials'
+import ContactSection from '../components/ourServices/ContactSection'
 
 
 const page = () => {
@@ -30,6 +33,14 @@ const page = () => {
 
                 {/* How We Work */}
                 <HowWeWork />
+
+                {/* FAQ Setction  */}
+                <FAQ />
+
+                {/* Testimonials Setction  */}
+                <Testimonials />
+
+                <ContactSection />
             </div>
             <Footer />
         </div>
