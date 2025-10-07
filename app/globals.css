@@ -38,7 +38,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -48,4 +48,17 @@ body {
 
 .scaleAnimation:hover {
   transform: scale(1.1);
+}
+
+/* Custom text selection style */
+::selection {
+  background-color: #f59e0b; /* Amber-500 */
+  color: #ffffff; /* White text */
+}
+
+/* For better browser support (Firefox) */
+::-moz-selection {
+  background-color: #f59e0b;
+  color: #ffffff;
+ 
 }
