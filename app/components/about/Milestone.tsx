@@ -90,7 +90,8 @@ const AboutPage: React.FC = () => {
                                     </div>
 
                                     {/* Content */}
-                                    <div className="flex-1 bg-gray-50 rounded-2xl p-6 shadow-lg border border-gray-200">
+                                    <div className={`flex-1 gap-5  ${index % 2 === 0 ? '-translate-x-5' : 'translate-x-5'
+                                        }  bg-gray-50 rounded-2xl  p-6 shadow-lg border border-gray-200`}>
                                         <h3 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
                                         <p className="text-gray-600">{milestone.description}</p>
                                     </div>
