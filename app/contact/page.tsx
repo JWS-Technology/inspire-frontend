@@ -11,6 +11,7 @@ export default function Page() {
     useEffect(() => {
         const ctx = gsap.context(() => {
             const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+            tl.timeScale(0.9)
 
             // nav (if rendered inside this react tree)
             tl.from('nav', { y: -20, opacity: 0, duration: 0.5 }, 0)
@@ -39,7 +40,7 @@ export default function Page() {
             tl.fromTo(
                 '.contact-form-card form input, .contact-form-card form textarea, .contact-form-card form button',
                 { y: 20, opacity: 0 },   // starting state
-                { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.in' },
+                { y: 0, opacity: 1, duration: 0.3, stagger: 0.04, ease: 'power3.in' },
 
             )
 
