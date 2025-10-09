@@ -77,9 +77,6 @@ const FAQ: React.FC = () => {
                   </span>
 
                   <span className="flex items-center gap-3 text-gray-500">
-                    <span className="text-sm text-gray-400 hidden md:inline">
-                      {isOpen ? "Close" : "Open"}
-                    </span>
                     <span className="p-1 rounded-full bg-gray-50 border border-gray-100">
                       {isOpen ? (
                         <ChevronUp className="w-5 h-5" />
