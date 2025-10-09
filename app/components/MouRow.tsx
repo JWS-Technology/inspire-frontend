@@ -4,6 +4,12 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
+declare global {
+  interface Window {
+    __marqueeResizeTid?: number;
+  }
+}
+
 type Item = { name: string; logo: string };
 
 type RowConfig = {
@@ -200,12 +206,12 @@ function MarqueeRow({ config, index }: { config: RowConfig; index: number }) {
             if (tlRef.current) {
                 try {
                     tlRef.current.kill();
-                } catch (e) { }
+                } catch { }
                 tlRef.current = null;
             }
             // slight delay so layout stabilizes
-            window.clearTimeout((window as any).__marqueeResizeTid);
-            (window as any).__marqueeResizeTid = window.setTimeout(() => {
+            window.clearTimeout(window.__marqueeResizeTid);
+            window.__marqueeResizeTid = window.setTimeout(() => {
                 start();
             }, 120);
         };
@@ -217,7 +223,7 @@ function MarqueeRow({ config, index }: { config: RowConfig; index: number }) {
             if (tlRef.current) {
                 try {
                     tlRef.current.kill();
-                } catch (e) { }
+                } catch { }
                 tlRef.current = null;
             }
             window.removeEventListener("resize", onResize);
