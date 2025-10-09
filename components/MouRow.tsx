@@ -5,9 +5,9 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 declare global {
-  interface Window {
-    __marqueeResizeTid?: number;
-  }
+    interface Window {
+        __marqueeResizeTid?: number;
+    }
 }
 
 type Item = { name: string; logo: string };
@@ -27,10 +27,23 @@ const rows: RowConfig[] = [
         label: "Corporate Clients",
         color: "from-blue-500 to-blue-600",
         items: [
-            { name: "HCL", logo: "corporate-clients/hcl.png" },
+
             { name: "Besmak", logo: "corporate-clients/besmak.jpg" },
             { name: "Blue Star", logo: "corporate-clients/blue star.png" },
             { name: "Cognizant", logo: "corporate-clients/cognizant.jpg" },
+            { name: "Cross Domain", logo: "corporate-clients/crossdomain.jpg" },
+            { name: "HCL", logo: "corporate-clients/hcl.png" },
+            { name: "Hwashin", logo: "corporate-clients/hwashin.png" },
+            { name: "Mphasis", logo: "corporate-clients/mphasis.jpg" },
+            { name: "Muthoot Fincorp", logo: "corporate-clients/muthoot fincorp.jpg" },
+            { name: "Redington", logo: "corporate-clients/redington.png" },
+            { name: "Samsung", logo: "corporate-clients/samsung.jpg" },
+            { name: "SGH", logo: "corporate-clients/sgh.png" },
+            { name: "Tata Consultancy Services", logo: "corporate-clients/tata consultancy services.jpg" },
+            { name: "Tata Power", logo: "corporate-clients/tata power.png" },
+            { name: "Titan", logo: "corporate-clients/titan.png" },
+            { name: "Valeo", logo: "corporate-clients/valeo.jpg" },
+            { name: "Yazaki", logo: "corporate-clients/yazaki.png" },
         ],
         reverse: false,
     },
