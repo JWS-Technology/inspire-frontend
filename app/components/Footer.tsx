@@ -1,12 +1,15 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, Phone, Mail, Globe, ArrowUp } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Footer: React.FC = () => {
   const [showButton, setShowButton] = useState(false);
+  const footerRef = useRef<HTMLElement | null>(null);
 
   // Show button when user scrolls down
   useEffect(() => {
@@ -26,8 +29,53 @@ const Footer: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  // GSAP + ScrollTrigger animation for footer
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const footerEl = footerRef.current;
+    // Select the three column children inside the max-width container
+    const columns = footerEl.querySelectorAll(".max-w-6xl .grid > div");
+    const divider = footerEl.querySelector(".border-t");
+    const copyright = footerEl.querySelector(".mt-6.text-center");
+
+    const itemsToAnimate: Element[] = [];
+    columns.forEach((c) => itemsToAnimate.push(c));
+    if (divider) itemsToAnimate.push(divider);
+    if (copyright) itemsToAnimate.push(copyright);
+
+    // animate from opacity 0 + y: 30 to visible with stagger, when footer enters viewport
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerEl,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+    });
+
+    tl.fromTo(
+      itemsToAnimate,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power3.out",
+      }
+    );
+
+    // cleanup
+    return () => {
+      if (tl.scrollTrigger) tl.scrollTrigger.kill();
+      tl.kill();
+    };
+  }, []);
+
   return (
-    <footer className="relative bg-[#1f2326] text-gray-300 pt-5 pb-9">
+    <footer className="relative bg-[#1f2326] text-gray-300 pt-5 pb-9" ref={footerRef}>
       <div className="max-w-6xl mx-auto px-6 md:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* LEFT: Logo + tagline */}
