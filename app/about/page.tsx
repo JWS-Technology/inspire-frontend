@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
-import Hero from "../components/about/Hero";
-import CoreValues from "../components/about/CoreValues";
-import Milestone from "../components/about/Milestone";
+import Navbar from "../../components/Navbar";
+import Hero from "../../components/about/Hero";
+import CoreValues from "../../components/about/CoreValues";
+import Milestone from "../../components/about/Milestone";
 // import CTASection from "../components/about/CTASection";
-import Footer from "../components/Footer";
+import Footer from "../../components/Footer";
 import type { Metadata } from "next";
 
 import keywords from "../seo/about-keywords.json";

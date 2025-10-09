@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef } from 'react'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../../components/Navbar'
+import Footer from '../../components/Footer'
 import { Mail, MapPin, Phone, Globe } from 'lucide-react'
 import { gsap } from 'gsap'
 

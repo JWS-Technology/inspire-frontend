@@ -1,8 +1,8 @@
 import React from "react";
 import { GraduationCap } from "lucide-react";
-import CompanyCard, { CompanyCardProps } from "../components/CompanyCard"; // import the type
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import CompanyCard, { CompanyCardProps } from "../../components/CompanyCard"; // import the type
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 
 const Page: React.FC = () => {
   const companies: CompanyCardProps[] = [
