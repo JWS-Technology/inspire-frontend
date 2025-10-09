@@ -155,7 +155,7 @@ function MarqueeRow({ config, index }: { config: RowConfig; index: number }) {
             if (tlRef.current) {
                 try {
                     tlRef.current.kill();
-                } catch (e) { }
+                } catch { }
                 tlRef.current = null;
             }
 
