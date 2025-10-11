@@ -207,7 +207,7 @@ const Hero: React.FC = () => {
             <div ref={headingRef}>
               <h1 className="text-4xl md:text-6xl font-bold leading-tight opacity-0">
                 Inspire Softech <br />
-                <span className="text-yellow-500 opacity-0">Group of Companies</span>
+                <span className="text-amber-500 opacity-0">Group of Companies</span>
               </h1>
             </div>
 
@@ -221,7 +221,7 @@ const Hero: React.FC = () => {
             </p>
 
             <div ref={buttonsRef} className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
-              <a href="/companies" className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
+              <a href="/companies" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transform transition-all hover:scale-105 duration-200 ">
                 Explore Our Companies →
               </a>
               <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
