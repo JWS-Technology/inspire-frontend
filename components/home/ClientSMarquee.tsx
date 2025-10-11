@@ -24,9 +24,9 @@ const corporateAndGovClients = [
   { name: "Valeo", logo: "corporate-clients/valeo.jpg" },
   { name: "Wipro", logo: "corporate-clients/wipro.jpg" },
   { name: "Yazaki", logo: "corporate-clients/yazaki.png" },
-  { name: "Advanced Training Institute - Government of India", logo: "Government Sector Prime  Clients/advanced training institute.png" },
-  { name: "CPCL", logo: "Government Sector Prime  Clients/CPCL.png" },
-  { name: "Integral Coach Factory", logo: "Government Sector Prime  Clients/integral coach factory.png" },
+  { name: "Advanced Training Institute - Government of India", logo: "goverment-clients/advanced-training-institute.png" },
+  { name: "CPCL", logo: "goverment-clients/cpcl.png" },
+  { name: "Integral Coach Factory", logo: "goverment-clients/integral-coach-factory.png" },
 ];
 
 const educationInstitutions = Array.from({ length: 35 }, (_, i) => ({
@@ -228,7 +228,7 @@ export default function ClientMarquee() {
   };
 
   return (
-    <section className="w-full py-12 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+    <section className="w-full bg-white overflow-hidden">
       <div
         className="relative"
         onMouseEnter={handleEnter}
