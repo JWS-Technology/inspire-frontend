@@ -5,7 +5,7 @@ import StatsSection from "../components/StatsSection";
 import CompanySection from "../components/CompanySection";
 import Footer from "../components/Footer";
 // import MarqueeRows from "../components/MarqueeRows"
-import ClientSection from "@/components/home/ClientSMarquee";
+import ClientSection from "@/components/home/ClientSection";
 
 export default function Home() {
   return (
