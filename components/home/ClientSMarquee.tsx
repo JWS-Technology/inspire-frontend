@@ -34,7 +34,7 @@ const educationInstitutions = Array.from({ length: 35 }, (_, i) => ({
   logo: `educational-institution/${i + 1}.png`,
 }));
 
-const clients = [...corporateAndGovClients, ...educationInstitutions];
+const clients = [...corporateAndGovClients, ...educationInstitutions, ...corporateAndGovClients, ...educationInstitutions, ...corporateAndGovClients, ...educationInstitutions,];
 
 export default function ClientMarquee() {
   const trackRef = useRef<HTMLDivElement | null>(null);
@@ -140,18 +140,18 @@ export default function ClientMarquee() {
     if (tlRef.current) {
       try {
         tlRef.current.kill();
-      } catch {}
+      } catch { }
       tlRef.current = null;
     }
     try {
       gsap.killTweensOf(track);
-    } catch {}
+    } catch { }
 
     // store new measurement
     prevSingleWidthRef.current = singleWidth;
 
     // speed configuration (px per second)
-    const speedPxPerSec = 350;
+    const speedPxPerSec = 200;
     const duration = Math.max(6, Math.abs(singleWidth) / speedPxPerSec);
     const sign = -1; // leftward flow visually
 
@@ -206,7 +206,7 @@ export default function ClientMarquee() {
       if (tlRef.current) {
         try {
           tlRef.current.kill();
-        } catch {}
+        } catch { }
         tlRef.current = null;
       }
       if (resizeTidRef.current) {
@@ -221,7 +221,7 @@ export default function ClientMarquee() {
 
   // pause/resume on hover & focus (smooth via timeScale)
   const handleEnter = () => {
-    if (tlRef.current) gsap.to(tlRef.current, { timeScale: 0.05, duration: 0.15 });
+    if (tlRef.current) gsap.to(tlRef.current, { timeScale: 0.55, duration: 0.9 });
   };
   const handleLeave = () => {
     if (tlRef.current) gsap.to(tlRef.current, { timeScale: 1, duration: 0.25 });
