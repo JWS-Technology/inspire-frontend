@@ -100,7 +100,7 @@ const Page = () => {
     // update every 12s (smoother)
     const interval = setInterval(() => {
       setyValue(randomPercent());
-    }, 12000);
+    }, 16000);
 
     return () => clearInterval(interval);
   }, []);
@@ -135,12 +135,16 @@ const Page = () => {
             title={watermarkId}
             aria-hidden="true"
           >
-            <span className="text-red-500 font-mono text-sm select-none pointer-no-wrap">
+            <span className="text-red-500 opacity-[0.6] font-mono text-sm select-none pointer-no-wrap">
               {watermarkId.slice(0, 10)} {/* trimmed, readable id */}
             </span>
           </div>
         )}
         <div className="absolute z-29 top-72 left-40 opacity-[0.3]">Inspire soft tech</div>
+
+        <div className="absolute top-5 right-10">
+            <Image src="https://edinztech.com/assets/img/inspire.png" alt="Logo" height={100} width={100} />
+        </div>
 
         {/* Controls */}
         <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 flex flex-col space-y-2">
