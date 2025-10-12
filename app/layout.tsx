@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Raleway } from "next/font/google";
-import "./globals.css";
-import keywords from "./seo/home-keywords.json"
+import "./globals.css"; // ✅ works fine now
+import keywords from "./seo/home-keywords.json";
 
+/* === Google Fonts (optimized) === */
 const raleway = Raleway({
   variable: "--font-raleway",
   subsets: ["latin"],
@@ -19,53 +20,85 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+/* === SITE CONSTANTS === */
+const siteUrl = "https://www.inspiresoftechgroup.com";
+const siteName = "Inspire Softech Group";
+const siteDescription =
+  "Inspire Softech Group of Companies — Empowering Growth through Knowledge & Technology. Bringing together Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions, and Igrean StarTech Solutions under one umbrella.";
+
+/* === METADATA === */
 export const metadata: Metadata = {
-  title: "INSPIRE SOFTECH Group of Companies",
-  description:
-    "INSPIRE SOFTECH Group of Companies – Empowering Growth through Knowledge & Technology. Bringing together Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions, and Igrean StarTech Solutions under one umbrella.",
+  title: siteName,
+  description: siteDescription,
   keywords,
-  authors: [{ name: "INSPIRE SOFTECH Group of Companies" }],
-  creator: "INSPIRE SOFTECH Group",
-  publisher: "INSPIRE SOFTECH Group",
+  authors: [{ name: siteName }],
+  creator: siteName,
+  publisher: siteName,
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: "INSPIRE SOFTECH Group of Companies",
+    title: "Inspire Softech Group of Companies",
     description:
       "A unified digital platform for Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions, and Igrean StarTech Solutions. Delivering training, IT solutions, enterprise services, and emerging technology innovations.",
-    url: "https://www.inspiresoftechgroup.com",
-    siteName: "INSPIRE SOFTECH Group",
-    images: [
-      {
-        url: "/og-image.jpg", // Replace with actual OG image in public/
-        width: 1200,
-        height: 630,
-        alt: "INSPIRE SOFTECH Group of Companies",
-      },
-    ],
+    url: siteUrl,
+    siteName,
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: `${siteUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "Inspire Softech Group of Companies",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "INSPIRE SOFTECH Group of Companies",
+    title: "Inspire Softech Group of Companies",
     description:
-      "Empowering Growth through Knowledge & Technology – Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions & Igrean StarTech Solutions.",
-    images: ["/og-image.jpg"], // Replace with actual image
-    creator: "@inspiresoftech", // If you have a Twitter handle
+      "Empowering Growth through Knowledge & Technology — Inspire Softech Solutions, Edinz Tech Pvt. Ltd., Adore Technology Solutions & Igrean StarTech Solutions.",
+    images: [`${siteUrl}/og-image.jpg`],
+    creator: "@inspiresoftech",
+    site: "@inspiresoftech",
   },
-  alternates: {
-    canonical: "https://www.inspiresoftechgroup.com",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  themeColor: "#ffffff",
 };
 
+/* === ROOT LAYOUT === */
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        {/* ✅ JSON-LD Structured Data for Google (Organization schema) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: siteName,
+              url: siteUrl,
+              logo: `${siteUrl}/logo.png`,
+              sameAs: [
+                "https://www.linkedin.com/company/inspire-softech",
+                "https://twitter.com/inspiresoftech",
+                "https://www.instagram.com/inspiresoftech",
+                "https://www.facebook.com/inspiresoftech",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body
-        // use .variable (or .className) — don't use the font object itself
         className={`${geistSans.variable} ${geistMono.variable} ${raleway.variable} antialiased`}
       >
         {children}
