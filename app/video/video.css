@@ -14,7 +14,7 @@
   /* keep the element small and not full width so it visibly scrolls */
   padding: 4px 8px;
   white-space: nowrap;
-  animation: move-left-to-right 12s linear infinite;
+  animation: move-left-to-right 15s linear infinite;
   font-weight: 500;
   pointer-events: none;
   user-select: none;
