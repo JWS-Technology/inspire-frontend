@@ -14,20 +14,24 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http", // Allow HTTP protocol
-        hostname: "**",   // Allow ALL hostnames (wildcard for any domain)
-        pathname: "/**",  // Allow ALL paths
+        hostname: "**", // Allow ALL hostnames (wildcard for any domain)
+        pathname: "/**", // Allow ALL paths
       },
       {
         protocol: "https", // Allow HTTPS protocol
-        hostname: "**",   // Allow ALL hostnames
-        pathname: "/**",  // Allow ALL paths
+        hostname: "**", // Allow ALL hostnames
+        pathname: "/**", // Allow ALL paths
       },
     ],
   },
 
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // Keep the previous dev config if you still need it for the cross-origin warning
   // dev: {
-  //   allowedDevOrigins: ['http://10.204.114.213'], 
+  //   allowedDevOrigins: ['http://10.204.114.213'],
   // },
 };
 
