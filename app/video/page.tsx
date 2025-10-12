@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Play, Pause, Volume2, VolumeX, Maximize, Minimize } from "lucide-react";
 import "./video.css";
+import Image from "next/image";
 
 const WATERMARK_KEY = "inspiresoftech_video_watermark_id";
 
@@ -139,6 +140,7 @@ const Page = () => {
             </span>
           </div>
         )}
+        <div className="absolute z-29 top-72 left-40 opacity-[0.3]">Inspire soft tech</div>
 
         {/* Controls */}
         <div className="absolute bottom-0 left-0 right-0 z-20 bg-gradient-to-t from-black/80 to-transparent p-4 flex flex-col space-y-2">
