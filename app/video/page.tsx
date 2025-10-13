@@ -143,7 +143,7 @@ const Page = () => {
         <div className="absolute z-29 top-72 left-40 opacity-[0.3]">Inspire soft tech</div>
 
         <div className="absolute top-5 right-10">
-            <Image src="https://edinztech.com/assets/img/inspire.png" alt="Logo" height={100} width={100} />
+          <Image src="https://edinztech.com/assets/img/inspire.png" alt="Logo" height={100} width={100} />
         </div>
 
         {/* Controls */}
