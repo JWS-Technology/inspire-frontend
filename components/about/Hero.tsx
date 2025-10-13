@@ -81,7 +81,7 @@ const AboutPageSimpleHero: React.FC = () => {
                         </div> */}
 
                         {/* Stats Section */}
-                        <div className="flex flex-wrap gap-8 border-t border-gray-200 pt-6">
+                        <div className="flex flex-wrap items-cen ter justify-center sm:justify-start gap-8 border-t border-gray-200 pt-6">
                             {[
                                 { icon: Users, label: "Students", value: "10K+" },
                                 { icon: BookOpen, label: "Projects", value: "500+" },
