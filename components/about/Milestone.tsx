@@ -50,7 +50,7 @@ const AboutPage: React.FC = () => {
     ];
 
     return (
-        <div className="bg-white">
+        <div className="bg-white px-5">
 
             {/* Journey Timeline */}
             <section
