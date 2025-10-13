@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Play, Pause, Volume2, VolumeX, Fullscreen, BookOpen } from "lucide-react";
+import { Play, Pause, Volume2, VolumeX, Fullscreen, BookOpen, ClockPlus, Volume1 } from "lucide-react";
 import Image from "next/image";
 import "./video.css";
 
@@ -45,6 +45,10 @@ export default function Page() {
   const [showControls, setShowControls] = useState(true);
   const [watermarkY, setWatermarkY] = useState(8);
 
+  // NEW: volume state and volume UI open state
+  const [volume, setVolume] = useState(1); // 0..1
+  const [volumeOpen, setVolumeOpen] = useState(false);
+
   useEffect(() => setWatermarkId(generateWatermarkId()), []);
 
   useEffect(() => {
@@ -60,6 +64,9 @@ export default function Page() {
 
     const onLoaded = () => {
       setDuration(v.duration || 0);
+      // initialize volume from the actual video element if available
+      setVolume(typeof v.volume === "number" ? v.volume : 1);
+      setIsMuted(!!v.muted);
     };
 
     const onTime = () => {
@@ -77,12 +84,28 @@ export default function Page() {
   }, []);
 
   useEffect(() => {
+    const VOLUME_STEP = 0.05; // 5% per key press
+
     const handler = (e: KeyboardEvent) => {
       const active = document.activeElement;
-      if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || (active as HTMLElement).isContentEditable)) return;
+      if (
+        active &&
+        (active.tagName === "INPUT" ||
+          active.tagName === "TEXTAREA" ||
+          (active as HTMLElement).isContentEditable)
+      )
+        return;
 
       const v = videoRef.current;
       if (!v) return;
+
+      const setVol = (newVol: number) => {
+        const clamped = Math.max(0, Math.min(1, newVol));
+        if (v.muted && clamped > 0) v.muted = false;
+        v.volume = clamped;
+        setVolume(clamped);
+        setIsMuted(v.muted);
+      };
 
       switch (e.code) {
         case "Space":
@@ -90,22 +113,37 @@ export default function Page() {
           e.preventDefault();
           togglePlay();
           break;
+
         case "ArrowLeft":
           e.preventDefault();
           v.currentTime = Math.max(0, v.currentTime - 5);
           break;
+
         case "ArrowRight":
           e.preventDefault();
           v.currentTime = Math.min(v.duration || 0, v.currentTime + 5);
           break;
+
+        case "ArrowUp":
+          e.preventDefault();
+          setVol(v.volume + VOLUME_STEP);
+          break;
+
+        case "ArrowDown":
+          e.preventDefault();
+          setVol(v.volume - VOLUME_STEP);
+          break;
+
         case "KeyM":
           e.preventDefault();
           toggleMute();
           break;
+
         case "KeyF":
           e.preventDefault();
           toggleFullscreen();
           break;
+
         default:
           break;
       }
@@ -114,6 +152,18 @@ export default function Page() {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, []);
+
+  // helper to set volume (keeps state + video element in sync)
+  const applyVolume = (newVol: number) => {
+    const v = videoRef.current;
+    const clamped = Math.max(0, Math.min(1, newVol));
+    if (v) {
+      v.volume = clamped;
+      if (v.muted && clamped > 0) v.muted = false;
+      setIsMuted(v.muted);
+    }
+    setVolume(clamped);
+  };
 
   const togglePlay = async () => {
     const v = videoRef.current;
@@ -134,6 +184,11 @@ export default function Page() {
     if (!v) return;
     v.muted = !v.muted;
     setIsMuted(v.muted);
+    // if unmuting and volume is 0, set to a sensible default
+    if (!v.muted && v.volume === 0) {
+      applyVolume(0.5);
+      if (v) v.volume = 0.5;
+    }
   };
 
   const seek = (value: number) => {
@@ -170,11 +225,8 @@ export default function Page() {
         </div>
       </header>
 
-
       <main className="flex-1 overflow-auto">
         <div className="max-w-6xl mx-auto p-6">
-
-
           <div ref={containerRef} id="video-container" className="relative bg-black rounded-lg overflow-hidden shadow mt-2">
             <video
               ref={videoRef}
@@ -223,9 +275,42 @@ export default function Page() {
                     {isPlaying ? <Pause size={22} /> : <Play size={22} />}
                   </button>
 
-                  <button onClick={toggleMute} aria-label="mute-unmute">
-                    {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
-                  </button>
+
+                  {/* Simple Horizontal Volume Control */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={toggleMute}
+                      aria-label={isMuted ? "Unmute" : "Mute"}
+                      className="flex items-center transition-transform hover:scale-110"
+                    >
+                      {isMuted || volume === 0 ? (
+                        <VolumeX size={18} />
+                      ) : volume < 0.5 ? (
+                        <Volume1 size={18} />
+                      ) : (
+                        <Volume2 size={18} />
+                      )}
+                    </button>
+
+                    <div className="flex items-center gap-2 w-24">
+                      <input
+                        aria-label="volume"
+                        type="range"
+                        min={0}
+                        max={1}
+                        step={0.01}
+                        value={volume}
+                        onChange={(e) => {
+                          const val = Number(e.target.value);
+                          applyVolume(val);
+                        }}
+                        className="w-full h-1 bg-white/30 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white"
+                      />
+                      <span className="text-xs text-white/80 min-w-[35px]">
+                        {Math.round(volume * 100)}%
+                      </span>
+                    </div>
+                  </div>
 
                   <div className="text-sm">
                     {formatTime(currentTime)} / {formatTime(duration)}
@@ -233,16 +318,28 @@ export default function Page() {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <button onClick={() => { if (videoRef.current) videoRef.current.currentTime = Math.max(0, (videoRef.current.currentTime || 0) - 10); }} aria-label="rewind">◀◀</button>
-                  <button onClick={() => { if (videoRef.current) videoRef.current.currentTime = Math.min((videoRef.current.duration || 0), (videoRef.current.currentTime || 0) + 10); }} aria-label="forward">▶▶</button>
-                  <button onClick={toggleFullscreen} aria-label="fullscreen">
+                  <button
+                    onClick={() => { if (videoRef.current) videoRef.current.currentTime = Math.max(0, (videoRef.current.currentTime || 0) - 10); }}
+                    aria-label="rewind"
+                    className="transition-transform hover:scale-110"
+                  >◀◀</button>
+                  <button
+                    onClick={() => { if (videoRef.current) videoRef.current.currentTime = Math.min((videoRef.current.duration || 0), (videoRef.current.currentTime || 0) + 10); }}
+                    aria-label="forward"
+                    className="transition-transform hover:scale-110"
+                  >▶▶</button>
+                  <button
+                    onClick={toggleFullscreen}
+                    aria-label="fullscreen"
+                    className="transition-transform hover:scale-110"
+                  >
                     <Fullscreen size={18} />
                   </button>
                 </div>
               </div>
             </div>
-
           </div>
+
           {/* --- Styled Course Header --- */}
           <section className="mt-4 bg-gradient-to-r from-white via-amber-50 to-white border rounded-xl p-6 shadow-md flex flex-col md:flex-row items-start gap-6">
             <div className="flex-shrink-0 bg-amber-100 rounded-lg p-3">
@@ -257,8 +354,8 @@ export default function Page() {
 
                   <div className="mt-3 flex flex-wrap items-center gap-2">
                     <span className="inline-flex items-center gap-2 rounded-md bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700 border border-amber-100">Beginner → Intermediate</span>
-                    <span className="inline-flex items-center gap-1 rounded-md bg-white px-2 py-1 text-xs text-gray-600 border">📚 12 modules</span>
-                    <span className="inline-flex items-center gap-1 rounded-md bg-white px-2 py-1 text-xs text-gray-600 border">⏱️ 18 hours</span>
+                    <span className="inline-flex items-center gap-1 rounded-md bg-white px-2 py-1 text-xs text-gray-600 border"><BookOpen width={15} height={15} className="-translate-y-0.5" /> 12 modules</span>
+                    <span className="inline-flex items-center gap-1 rounded-md bg-white px-2 py-1 text-xs text-gray-600 border"><ClockPlus width={15} height={15} className="-translate-y-0.5" /> 18 hours</span>
                   </div>
                 </div>
 
@@ -269,15 +366,13 @@ export default function Page() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    {/* <button className="inline-flex items-center gap-2 rounded-md bg-amber-600 text-white px-3 py-2 text-sm font-semibold shadow-sm hover:shadow-md transition">Enroll</button> */}
                     <button className="inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm text-gray-700">Syllabus</button>
                   </div>
                 </div>
               </div>
-
-
             </div>
           </section>
+
           <section className="mt-6 bg-white rounded-lg p-4 shadow">
             <h2 className="font-semibold text-black mb-2">Course content</h2>
             <p className="text-sm text-gray-900">A concise, focused curriculum covering HTML, CSS, JavaScript and MERN basics.</p>
