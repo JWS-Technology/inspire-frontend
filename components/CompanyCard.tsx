@@ -1,5 +1,4 @@
 "use client";
-
 import React from "react";
 
 export interface CompanyCardProps {
@@ -14,7 +13,16 @@ export interface CompanyCardProps {
   vision?: string;
   color?: "amber" | "blue" | "green" | "purple";
   accentClass?: string;
+
+  // <-- new contact field
+  contact?: {
+    phone?: string;
+    email?: string;
+    address?: string;
+    website?: string;
+  };
 }
+
 
 const CompanyCard: React.FC<CompanyCardProps> = ({
   icon,
@@ -68,11 +76,13 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
 
   return (
     <article
-      className="w-[90vw] max-w -4xl bg-white rounded-2xl border border-gray-100 p-6 md:p-8 transition-all duration-300 ease-in-out transform hover:-tran slate-y-1 hove r:scale-110 hover: shadow-xl"
+      className="w-[90vw] bg-white rounded-2xl border border-gray-100 p-6 md:p-8 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl"
       aria-labelledby={`company-${title.replace(/\s+/g, "-").toLowerCase()}`}
     >
-      <div className="flex items-start gap-6">
-        <div className="flex-shrink-0">
+      {/* responsive flex layout */}
+      <div className="flex flex-col sm:flex-row sm:items-start gap-5 sm:gap-6">
+        {/* icon section */}
+        <div className="flex-shrink-0 flex justify-center sm:justify-start">
           <div
             className={`w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center ${
               accentClass || theme.accent
@@ -83,6 +93,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
           </div>
         </div>
 
+        {/* text section */}
         <div className="flex-1 min-w-0">
           <h3
             id={`company-${title.replace(/\s+/g, "-").toLowerCase()}`}
@@ -107,19 +118,13 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             </p>
           )}
 
-          {/* ===== NEW: Core Services stylized header ===== */}
-         
-
-          {/* ===== optional extra sections (unchanged behavior) ===== */}
           {focusAreas && (
             <>
               <h4 className="mt-6 text-gray-900 font-semibold">Focus Areas:</h4>
               <ul className="mt-3 grid gap-3 text-gray-700 text-sm md:text-base">
                 {focusAreas.map((area, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <span
-                      className={`mt-2 inline-flex w-3 h-3 rounded-full ${theme.dot} flex-shrink-0`}
-                    />
+                    <span className={`mt-2 inline-flex w-3 h-3 rounded-full ${theme.dot}`} />
                     <span className="leading-snug">{area}</span>
                   </li>
                 ))}
@@ -131,57 +136,48 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
             <div className="mt-6 space-y-3">
               {mission && (
                 <p className="text-sm md:text-base text-gray-600">
-                  <span className={`font-semibold ${theme.text}`}>Mission:</span>{" "}
-                  {mission}
+                  <span className={`font-semibold ${theme.text}`}>Mission:</span> {mission}
                 </p>
               )}
               {vision && (
                 <p className="text-sm md:text-base text-gray-600">
-                  <span className={`font-semibold ${theme.text}`}>Vision:</span>{" "}
-                  {vision}
+                  <span className={`font-semibold ${theme.text}`}>Vision:</span> {vision}
                 </p>
               )}
             </div>
           )}
 
-           <div className="mt-6">
+          {/* Core Services */}
+          <div className="mt-6">
             <div className="flex items-center gap-3">
-              {/* small rounded gradient bar */}
               <span
                 className={`inline-block w-10 h-2 rounded-full bg-gradient-to-r ${theme.headerGradient} shadow-sm`}
-                aria-hidden="true"
               />
               <h4 className="text-sm md:text-base font-semibold text-gray-600 uppercase tracking-wide">
                 Core Services
               </h4>
             </div>
 
-            {/* pill-style services grid (like your screenshot) */}
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-9">
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {services.map((svc, i) => (
                 <div
                   key={i}
-                  className={`flex items-center gap-3 rounded-full px-5 py-4 ${theme.pillBg} border border-transparent shadow-sm hover:shadow-md transition-all duration-200 cursor-default`}
+                  className={`flex items-center gap-3 rounded-full px-4 py-3 ${theme.pillBg} border border-transparent shadow-sm hover:shadow-md transition-all duration-200`}
                 >
-                  {/* arrow / icon accent */}
                   <span
                     className={`inline-flex items-center justify-center w-6 h-6 rounded-full ${theme.dot} text-white flex-shrink-0`}
-                    aria-hidden="true"
                   >
-                    {/* simple arrow icon (svg) */}
                     <svg
                       width="12"
                       height="12"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      className="inline-block"
                     >
-                      <path d="M5 12h14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 12h14" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M12 5l7 7-7 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
-
                   <span className="text-sm md:text-base text-gray-700">{svc}</span>
                 </div>
               ))}
