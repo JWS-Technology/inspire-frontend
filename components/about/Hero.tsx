@@ -56,36 +56,12 @@ const AboutPageSimpleHero: React.FC = () => {
                             <span className="text-green-600 font-medium">industry-ready</span> solutions that connect learners with real-world impact.
                         </p>
 
-                        {/* CTA Buttons */}
-                        {/* <div className="flex flex-col sm:flex-row gap-4 mb-10">
-                            <a
-                                href="#about"
-                                className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-semibold px-7 py-3.5 rounded-xl shadow-md hover:shadow-xl hover:from-amber-600 hover:to-yellow-600 transition-all duration-300"
-                            >
-                                Explore Our Story
-                                <ArrowRight className="w-5 h-5" />
-                            </a>
-
-                            <a
-                                href="tel:+918667493679"
-                                className="inline-flex items-center gap-4 bg-white border border-gray-200 px-6 py-3.5 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
-                            >
-                                <div className="bg-green-100 p-2 rounded-lg">
-                                    <PhoneCall className="w-5 h-5 text-green-600" />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-sm text-gray-500">Call us</p>
-                                    <p className="font-semibold text-gray-900">+91 86674 93679</p>
-                                </div>
-                            </a>
-                        </div> */}
-
                         {/* Stats Section */}
                         <div className="flex flex-wrap items-cen ter justify-center sm:justify-start gap-8 border-t border-gray-200 pt-6">
                             {[
-                                { icon: Users, label: "Students", value: "10K+" },
-                                { icon: BookOpen, label: "Projects", value: "500+" },
-                                { icon: Globe, label: "Countries", value: "15+" }
+                                { icon: Users, label: "Students", value: "200K+" },
+                                { icon: BookOpen, label: "Projects", value: "5000+" },
+                                { icon: Globe, label: "Cities", value: "100+" }
                             ].map(({ icon: Icon, label, value }, i) => (
                                 <div key={i} className="flex items-center gap-3">
                                     <div className="bg-amber-100 p-2.5 rounded-lg">
