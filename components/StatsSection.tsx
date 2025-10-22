@@ -9,7 +9,7 @@ const StatsSection = () => {
 
     const stats = [
         { number: 500, label: "Total Courses", suffix: "+", icon: BookOpen },
-        { number: 19000, label: "Our Students", suffix: "+", icon: Users },
+        { number: 200000, label: "Our Students", suffix: "+", icon: Users },
         { number: 750, label: "Skilled Lecturers", suffix: "+", icon: GraduationCap },
         { number: 30, label: "Win Awards", suffix: "+", icon: Award }
     ];
