@@ -98,11 +98,11 @@ const Page: React.FC = () => {
     },
     {
       icon: <Cpu className="w-7 h-7 text-white" />,
-      title: "Igrean StarTech Solutions",
+      title: "IGreen StarTech Solutions",
       tagline: "Driving the Future with AI, IoT & Emerging Tech.",
       color: "purple",
       description:
-        "Igrean StarTech Solutions is the research and innovation hub of the group, focused on emerging technologies such as AI, IoT, and Data Science.",
+        "IGreen StarTech Solutions is the research and innovation hub of the group, focused on emerging technologies such as AI, IoT, and Data Science.",
       about:
         "Our prototyping labs and R&D teams build ML models, IoT prototypes, and analytics platforms to help clients evaluate and deploy next-generation solutions.",
       services: [
