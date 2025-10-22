@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import Link from "next/link";
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -222,12 +223,14 @@ const Hero: React.FC = () => {
             </p>
 
             <div ref={buttonsRef} className="mt-8 flex flex-col md:flex-row gap-4 justify-center">
-              <a href="/companies" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transform transition-all hover:scale-105 duration-200 ">
+              <Link href="/companies" className="bg-amber-500 hover:bg-amber-600 text-black font-semibold px-6 py-3 rounded-md shadow-md transform transition-all hover:scale-105 duration-200 ">
                 Explore Our Companies →
-              </a>
-              <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
-                Discover Our Services
-              </button>
+              </Link>
+              <Link href="/services">
+                <button className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-md shadow-md transform transition-transform hover:scale-105 duration-200">
+                  Discover Our Services
+                </button>
+              </Link>
             </div>
             <div className="flex items-center justify-center px-4">
               <div className="bg-zinc-800 px-6 sm:px-10 md:px-16 py-2 sm:py-1 rounded-xl translate-y-10 sm:translate-y-16 shadow-lg">

@@ -34,18 +34,17 @@ const ContactSection = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-sm sm:text-lg">
-              <div className="bg-orange-100 text-orange-600 p-3 rounded-lg">
-                <Mail size={22} />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm text-gray-500">Email</p>
-                {/* allow long emails to wrap instead of overflowing */}
-                <p className="font-semibold text-gray-900 break-words max-w-full">
-                  info@inspiresoftechgroup.com
-                </p>
-              </div>
-            </div>
+                        <div className="flex items-center gap-4">
+                            <div className="bg-orange-100 text-orange-600 p-3 rounded-lg">
+                                <Mail size={22} />
+                            </div>
+                            <div>
+                                <p className="text-sm text-gray-500">Email</p>
+                                <p className="font-semibold text-gray-900">
+                                    info@inspiresoftechgroup.com
+                                </p>
+                            </div>
+                        </div>
 
             <div className="flex items-center gap-4">
               <div className="bg-orange-100 text-orange-600 p-3 rounded-lg">

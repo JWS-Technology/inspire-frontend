@@ -1,7 +1,7 @@
 "use client";
-
 import React from "react";
 import { ArrowRight, Download } from "lucide-react";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -27,18 +27,24 @@ const HeroSection = () => {
 
       {/* Buttons */}
       <div className="flex flex-col sm:flex-row gap-4">
-        <button className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300">
-          Contact Us <ArrowRight className="w-4 h-4" />
-        </button>
+        <Link href="/contact">
+          <button className="flex items-center justify-center hover:cursor-pointer gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-300">
+            Contact Us <ArrowRight className="w-4 h-4" />
+          </button>
+        </Link>
 
-        <button className="bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300">
-          View Internships
-        </button>
+        <Link href="https://edinztech.com/program" target="_blank">
+          <button className="bg-white border hover:cursor-pointer border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300">
+            View Internships
+          </button>
+        </Link>
 
-        <button className="flex items-center justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300">
-          <Download className="w-4 h-4" />
-          Download Brochure
-        </button>
+        <Link href="https://edinztech.com/program" target="_blank">
+          <button className="flex items-center hover:cursor-pointer justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-800 font-semibold px-6 py-3 rounded-lg shadow-sm transition-all duration-300">
+            <Download className="w-4 h-4" />
+            Download Brochure
+          </button>
+        </Link>
       </div>
     </section>
   );

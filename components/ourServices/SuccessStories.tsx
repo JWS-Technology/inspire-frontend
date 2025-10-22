@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function SuccessStories() {
   // local colors
@@ -36,9 +37,9 @@ export default function SuccessStories() {
                 <p className="text-sm text-gray-500 mt-3">{s.desc}</p>
                 <div className={`mt-4 font-medium ${cs.link}`}>{s.org}</div>
 
-                <a href="#" className="mt-6 inline-flex items-center gap-2 text-sm text-gray-700 font-medium hover:gap-3 transition-all">
+                <Link href="https://edinztech.com/program" className="mt-6 inline-flex items-center gap-2 text-sm text-gray-700 font-medium hover:gap-3 transition-all">
                   Read case study <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             );
           })}

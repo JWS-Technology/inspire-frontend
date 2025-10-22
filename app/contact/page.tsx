@@ -98,7 +98,7 @@ export default function Page() {
                                         <h4 className="font-semibold">Email</h4>
                                         <p>
                                             <a href="mailto:info@inspiresoftechgroup.com" className="hover:underline">
-                                                info@inspiresoftechgroup.com
+                                                training@inspiress.in
                                             </a>
                                         </p>
                                     </div>

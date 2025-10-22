@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -201,12 +202,12 @@ const AboutSection: React.FC = () => {
                     {/* CTA + Contact */}
                     <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-4 md:gap-5 border-t border-gray-200 pt-4 md:pt-6">
                         <div className="hover:scale-110 transition-all duration-300">
-                            <a
-                                href="#"
+                            <Link
+                                href="/about"
                                 className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-5 py-2 md:px-6 md:py-3 rounded-md shadow-md transition-all duration-200 flex items-center gap-2 text-sm md:text-base w-full sm:w-auto justify-center gsap-cta "
                             >
                                 Discover More →
-                            </a>
+                            </Link>
 
                         </div>
                         <div className="hover:scale-110 transition-all duration-300">
