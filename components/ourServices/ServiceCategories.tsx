@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { GraduationCap, Code2, Cloud, Cpu, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ServiceCategories() {
   // color mapping local to this component
@@ -35,7 +36,7 @@ export default function ServiceCategories() {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
                   <p className="text-gray-600 mb-3">{service.description}</p>
-                  <a href="#" className={`${colors.link} font-medium inline-flex items-center gap-1 hover:gap-2 transition-all`}>Learn more <ArrowRight className="w-4 h-4" /></a>
+                  <Link href="https://edinztech.com/program" target="_blank" className={`${colors.link} font-medium inline-flex items-center gap-1 hover:gap-2 transition-all`}>Learn more <ArrowRight className="w-4 h-4" /></Link>
                 </div>
               </div>
             </div>
