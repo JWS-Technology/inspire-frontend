@@ -4,6 +4,7 @@ import gsap from "gsap";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { NavLink } from "./Navbar";
+import Link from "next/link";
 
 type Props = {
     links: NavLink[];
@@ -157,10 +158,14 @@ const NavbarDesktop: React.FC<Props> = ({ links }) => {
                     SOFTECH
                 </span>
             </div> */}
-            <div className="">
-
+            <Link href="/">
+                <div className="">
+                    <Image className="scale-110 translate-x-3 -translate-y-0.5" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
+                </div>
+            </Link>
+            {/* <div className="">
                 <Image className="scale-110 translate-x-3 -translate-y-0.5" height={5} width={120} src="https://edinztech.com/assets/img/inspire.png" alt="logo" />
-            </div>
+            </div> */}
 
             {/* Links */}
             <ul ref={linksRef} className="flex space-x-8 text-white">
