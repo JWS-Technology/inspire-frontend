@@ -16,6 +16,7 @@ import {
     Zap,
 } from "lucide-react";
 import gsap from "gsap";
+import Link from "next/link";
 
 const companies = [
     {
@@ -470,8 +471,8 @@ export default function OurCompaniesSimplePro() {
                                 </div>
 
                                 <div className="flex flex-wrap gap-4">
-                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="/companies" >Explore Services <ExternalLink className="w-4 h-4" /></a>
-                                    <a className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="/contact">Contact Team <ArrowRight className="w-4 h-4 " /></a>
+                                    <Link className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105" href="/companies" >Explore Services <ExternalLink className="w-4 h-4" /></Link>
+                                    <Link className="inline-flex items-center gap-3 px-6 py-3 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:border-gray-400 transition-all duration-300 hover:scale-105" href="/contact">Contact Team <ArrowRight className="w-4 h-4 " /></Link>
                                 </div>
                             </div>
 
