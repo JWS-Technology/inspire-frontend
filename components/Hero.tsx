@@ -155,6 +155,7 @@ const Hero: React.FC = () => {
 
   return (
     <div className="h-screen overflow-hidden">
+
       <div ref={heroRef} className="relative h-screen w-full">
         {/* Media container: keep the same element shape (div) for SSR -> client.
             We use suppressHydrationWarning because the inner content (video vs image)
@@ -228,6 +229,15 @@ const Hero: React.FC = () => {
                 Discover Our Services
               </button>
             </div>
+            <div className="flex items-center justify-center px-4">
+              <div className="bg-zinc-800 px-6 sm:px-10 md:px-16 py-2 sm:py-1 rounded-xl translate-y-10 sm:translate-y-16 shadow-lg">
+                <h1 className="text-base sm:text-lg md:text-lg text-center animate-pulse duration-500 text-white">
+                  ⚠️ Website under maintenance ⚠️
+                </h1>
+              </div>
+            </div>
+
+
           </div>
         </section>
       </div>
