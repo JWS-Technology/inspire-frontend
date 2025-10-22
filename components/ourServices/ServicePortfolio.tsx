@@ -42,7 +42,7 @@ export default function ServicePortfolio() {
             ],
         },
         {
-            company: "Igrean StarTech Solutions",
+            company: "IGreen StarTech Solutions",
             color: "purple",
             items: [
                 { title: "AI & Machine Learning", subtitle: "For: Tech Companies" },
