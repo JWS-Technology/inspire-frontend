@@ -56,8 +56,8 @@ const companies = [
     },
     {
         id: 4,
-        name: "Igrean StarTech Solutions",
-        shortName: "Igrean StarTech",
+        name: "IGreen StarTech Solutions",
+        shortName: "IGreen StarTech Solutions",
         icon: Cpu,
         color: "purple",
         description: "AI, IoT & Emerging Tech Research",
