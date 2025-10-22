@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { Award, Cloud, CheckCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function FeaturedPrograms() {
   // local color mapping
@@ -83,9 +84,12 @@ export default function FeaturedPrograms() {
                 </div>
 
                 <div className="mt-4">
-                  <button className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition-all duration-200">
-                    Apply Now <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <Link href="https://edinztech.com/program" target="_blank">
+
+                    <button className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg shadow transition-all duration-200">
+                      Apply Now <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
                 </div>
               </article>
             );
