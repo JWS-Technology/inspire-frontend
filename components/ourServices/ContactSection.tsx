@@ -42,7 +42,7 @@ const ContactSection = () => {
                 <p className="text-sm text-gray-500">Email</p>
                 {/* allow long emails to wrap instead of overflowing */}
                 <p className="font-semibold text-gray-900 break-words max-w-full">
-                  info@inspiresoftechgroup.com
+                  training@inspiress.in
                 </p>
               </div>
             </div>
