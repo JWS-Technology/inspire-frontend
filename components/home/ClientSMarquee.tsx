@@ -25,7 +25,7 @@ const corporateAndGovClients = [
   { name: "Wipro", logo: "corporate-clients/wipro.jpg" },
   { name: "Yazaki", logo: "corporate-clients/yazaki.png" },
   { name: "Advanced Training Institute - Government of India", logo: "goverment-clients/advanced-training-institute.png" },
-  { name: "CPCL", logo: "goverment-clients/cpcl.png" },
+  { name: "CPCL", logo: "goverment-clients/CPCL.png" },
   { name: "Integral Coach Factory", logo: "goverment-clients/integral-coach-factory.png" },
 ];
 
