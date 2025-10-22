@@ -77,7 +77,9 @@ export default function Page() {
                                     <MapPin className="w-6 h-6 text-yellow-500 mt-1" />
                                     <div>
                                         <h4 className="font-semibold">Office Address</h4>
-                                        <p>[Your Office Address Here]</p>
+                                        <p>10th Floor, CITIUS A Block, Phase 1,
+                                            Olympia Tech Park Plot No.1, SIDCO
+                                            Industrial Estate, Guindy, Chennai- 600032</p>
                                     </div>
                                 </div>
 
