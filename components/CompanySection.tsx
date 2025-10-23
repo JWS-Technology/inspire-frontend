@@ -22,7 +22,7 @@ const companies = [
     {
         id: 1,
         name: "Inspire Softech Solutions",
-        shortName: "Inspire Softech",
+        shortName: "Inspire Softech Solutions",
         icon: GraduationCap,
         color: "amber",
         description: "Training & Skill Development",
@@ -37,7 +37,7 @@ const companies = [
     {
         id: 2,
         name: "Edinz Tech Pvt. Ltd.",
-        shortName: "Edinz Tech",
+        shortName: "Edinz Tech Pvt. Ltd.",
         icon: Code,
         color: "blue",
         description: "Technology Services & Solutions",
@@ -48,7 +48,7 @@ const companies = [
     {
         id: 3,
         name: "Adore Technology Solutions",
-        shortName: "Adore Tech",
+        shortName: "Adore Technology Solutions",
         icon: Cloud,
         color: "green",
         description: "Enterprise Technology & Automation",
