@@ -8,6 +8,7 @@ const Page: React.FC = () => {
   const companies: CompanyCardProps[] = [
     {
       icon: <GraduationCap className="w-7 h-7 text-white" />,
+      cssId: "Inspire",
       title: "Inspire Softech Solutions",
       tagline: "Empowering Minds through Training, Internships & Skill Development.",
       color: "amber",
@@ -38,6 +39,7 @@ const Page: React.FC = () => {
     },
     {
       icon: <Code className="w-7 h-7 text-white" />,
+      cssId: "Edinz",
       title: "Edinz Tech Pvt. Ltd.",
       tagline: "Innovating Businesses with Smart Digital Solutions.",
       color: "blue",
@@ -68,6 +70,7 @@ const Page: React.FC = () => {
     },
     {
       icon: <Cloud className="w-7 h-7 text-white" />,
+      cssId: "Adore",
       title: "Adore Technology Solutions",
       tagline: "Transforming Enterprises with Cloud & Business Technology.",
       color: "green",
@@ -98,6 +101,7 @@ const Page: React.FC = () => {
     },
     {
       icon: <Cpu className="w-7 h-7 text-white" />,
+      cssId: "IGreen",
       title: "IGreen StarTech Solutions",
       tagline: "Driving the Future with AI, IoT & Emerging Tech.",
       color: "purple",
