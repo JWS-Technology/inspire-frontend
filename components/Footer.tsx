@@ -113,13 +113,13 @@ const Footer: React.FC = () => {
               <a href="tel:+919360505768">
                 <li className="flex items-center gap-3 mb-3">
                   <PhoneCall className="w-5 h-5 text-amber-400" />
-                  <span>+91 93605 05768</span>
+                  <span style={{ fontFamily: "sans-serif" }}>+91 93605 05768</span>
                 </li>
               </a>
               <a href="tel:+918667493679">
                 <li className="flex items-center gap-3 mb-3">
                   <Phone className="w-5 h-5 text-amber-400" />
-                  <span>+91 86674 93679</span>
+                  <span style={{ fontFamily: "sans-serif" }}>+91 86674 93679</span>
                 </li>
               </a>
               <li className="flex items-center gap-3">
