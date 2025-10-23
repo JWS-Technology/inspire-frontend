@@ -22,7 +22,7 @@ const companies = [
     {
         id: 1,
         name: "Inspire Softech Solutions",
-        shortName: "Inspire Softech",
+        shortName: "Inspire Softech Solutions",
         icon: GraduationCap,
         color: "amber",
         description: "Training & Skill Development",
@@ -37,7 +37,7 @@ const companies = [
     {
         id: 2,
         name: "Edinz Tech Pvt. Ltd.",
-        shortName: "Edinz Tech",
+        shortName: "Edinz Tech Pvt. Ltd.",
         icon: Code,
         color: "blue",
         description: "Technology Services & Solutions",
@@ -48,7 +48,7 @@ const companies = [
     {
         id: 3,
         name: "Adore Technology Solutions",
-        shortName: "Adore Tech",
+        shortName: "Adore Technology Solutions",
         icon: Cloud,
         color: "green",
         description: "Enterprise Technology & Automation",
@@ -324,7 +324,7 @@ export default function OurCompaniesSimplePro() {
             ref={sectionRef}
             className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden"
         >
-            {/* Animated Background — render particles only after client mount to avoid hydration mismatch */}
+
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {mounted &&
                     particles.map((p, i) => (
@@ -371,44 +371,50 @@ export default function OurCompaniesSimplePro() {
                         const colors = colorMap[c.color as keyof typeof colorMap];
                         const Icon = c.icon;
                         return (
-                            <article
-                                ref={(el) => { cardsRef.current[index] = el as HTMLDivElement | null; }}
-                                key={c.id}
-                                className={`company-card group opacity-0 bg-white rounded-2xl border border-gray-200 shadow-lg p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500 hover:shadow-xl ${colors.hoverBorder} ${colors.hoverBg} ${colors.hoverShadow}`}
-                                onClick={() => setOpen(c.id)}
-                                onMouseEnter={() => handleCardHover(index)}
-                                onMouseLeave={() => handleCardLeave(index)}
-                                role="button"
-                                tabIndex={0}
-                                onKeyDown={(e) => {
-                                    if (e.key === "Enter" || e.key === " ") setOpen(c.id);
-                                }}
-                                aria-label={`${c.name} — open details`}
-                            >
-                                <div className="relative">
-                                    <div
-                                        className={`flex-shrink-0 rounded-xl p-4 bg-gradient-to-r ${colors.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                                        style={{ width: 64, height: 64 }}
-                                    >
-                                        <Icon className="w-9 h-9 -translate-0.5  text-white" />
+                            <Link key={index} href="/companies">
+                                <article
+                                    ref={(el) => { cardsRef.current[index] = el as HTMLDivElement | null; }}
+                                    key={c.id}
+                                    className={`company-card group opacity-0 bg-white rounded-2xl border border-gray-200 shadow-lg p-6 flex items-start gap-5 cursor-pointer transform-gpu will-change-transform transition-all duration-500 hover:shadow-xl ${colors.hoverBorder} ${colors.hoverBg} ${colors.hoverShadow}`}
+                                    // onClick={() => setOpen(c.id)}
+                                    onMouseEnter={() => handleCardHover(index)}
+                                    onMouseLeave={() => handleCardLeave(index)}
+                                    role="button"
+                                    tabIndex={0}
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter" || e.key === " ") setOpen(c.id);
+                                    }}
+                                    aria-label={`${c.name} — open details`}
+                                >
+                                    <div className="relative">
+                                        <div
+                                            className={`flex-shrink-0 rounded-xl p-4 bg-gradient-to-r ${colors.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}
+                                            style={{ width: 64, height: 64 }}
+                                        >
+                                            <Icon className="w-9 h-9 -translate-0.5  text-white" />
+                                        </div>
+                                        <div
+                                            className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"
+                                            style={{ background: "rgba(0,0,0,0.02)" }}
+                                        />
                                     </div>
-                                    <div
-                                        className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"
-                                        style={{ background: "rgba(0,0,0,0.02)" }}
-                                    />
-                                </div>
 
-                                <div className="flex-1 min-w-0">
-                                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">{c.shortName}</h3>
-                                    <p className="text-gray-600 mt-2 leading-relaxed">{c.description}</p>
-                                    <div className="mt-4 flex items-center gap-4">
-                                        <button className="text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 group-hover:scale-105" onClick={(e) => { e.stopPropagation(); setOpen(c.id); }}>Explore Details</button>
-                                        <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">{c.services.length} specialized services</span>
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="text-xl font-bold text-gray-900 group-hover:text-gray-800 transition-colors">{c.shortName}</h3>
+                                        <p className="text-gray-600 mt-2 leading-relaxed">{c.description}</p>
+                                        <div className="mt-4 flex items-center gap-4">
+                                            <button className="text-sm font-semibold text-gray-700 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors duration-300 group-hover:scale-105"
+                                                onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    // setOpen(c.id);
+                                                }}>Explore Details</button>
+                                            <span className="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded">{c.services.length} specialized services</span>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <ArrowRight className={`w-5 h-5 text-gray-400 ${colors.hoverText} group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1`} />
-                            </article>
+                                    <ArrowRight className={`w-5 h-5 text-gray-400 ${colors.hoverText} group-hover:translate-x-1 transition-all duration-300 flex-shrink-0 mt-1`} />
+                                </article>
+                            </Link>
                         );
                     })}
                 </div>
@@ -439,9 +445,11 @@ export default function OurCompaniesSimplePro() {
 
             {/* Overlay — backdrop-blur applied here so dialog stays sharp */}
             {open && (
-                <div className="fixed   inset-0 z-50 flex items-center justify-center px-4 pointer-events-auto">
+                <div className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-auto">
                     {/* backdrop: semi-transparent + blur — only affects what's behind it */}
-                    <div ref={overlayRef} className="absolute inset-0 bg-black/55 backdrop-blur-md transition-all" onClick={() => setOpen(null)} />
+                    <div ref={overlayRef} className="absolute inset-0 bg-black/55 backdrop-blur-md transition-all"
+                    //  onClick={() => setOpen(null)} 
+                    />
 
                     {/* dialog content (not blurred) — GSAP animates this for buttery effect */}
                     <div className="overlay-content  top-[9vh] relative max-w-4xl md:top-0 w-full mx-auto bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden transform-gpu will-change-transform">
@@ -476,11 +484,13 @@ export default function OurCompaniesSimplePro() {
                                 </div>
                             </div>
 
-                            <button className="absolute top-4 right-4 p-3 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-110" onClick={() => setOpen(null)} aria-label="Close dialog"><X className="w-5 h-5 text-gray-600" /></button>
+                            <button className="absolute top-4 right-4 p-3 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-110"
+                                // onClick={() => setOpen(null)} 
+                                aria-label="Close dialog"><X className="w-5 h-5 text-gray-600" /></button>
                         </div>
                     </div>
                 </div>
             )}
-        </section>
+        </section >
     );
 }

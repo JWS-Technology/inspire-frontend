@@ -30,7 +30,7 @@ const ContactSection = () => {
               </div>
               <div className="min-w-0">
                 <p className="text-sm text-gray-500">Phone</p>
-                <p className="font-semibold text-gray-900">+91 93605 05768</p>
+                <p className="font-semibold text-gray-900" style={{ fontFamily: "sans-serif" }}>+91 93605 05768</p>
               </div>
             </div>
 

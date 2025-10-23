@@ -87,8 +87,8 @@ export default function Page() {
                                     <Phone className="w-6 h-6 text-yellow-500 mt-1" />
                                     <div>
                                         <h4 className="font-semibold">Phone</h4>
-                                        <p>+91 93605 05768</p>
-                                        <p>+91 86674 93679</p>
+                                        <p style={{ fontFamily: "sans-serif" }}>+91 93605 05768</p>
+                                        <p style={{ fontFamily: "sans-serif" }}>+91 86674 93679</p>
                                     </div>
                                 </div>
 

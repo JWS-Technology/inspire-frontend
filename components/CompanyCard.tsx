@@ -3,6 +3,7 @@ import React from "react";
 
 export interface CompanyCardProps {
   icon: React.ReactNode;
+  cssId: string,
   title: string;
   tagline?: string;
   description: string;
@@ -26,6 +27,7 @@ export interface CompanyCardProps {
 
 const CompanyCard: React.FC<CompanyCardProps> = ({
   icon,
+  cssId,
   title,
   tagline,
   description,
@@ -76,7 +78,7 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
 
   return (
     <article
-      className="w-[90vw] bg-white rounded-2xl border border-gray-100 p-6 md:p-8 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl"
+      className={`${cssId} w-[90vw] bg-white rounded-2xl border border-gray-100 p-6 md:p-8 transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-xl`}
       aria-labelledby={`company-${title.replace(/\s+/g, "-").toLowerCase()}`}
     >
       {/* responsive flex layout */}
@@ -84,9 +86,8 @@ const CompanyCard: React.FC<CompanyCardProps> = ({
         {/* icon section */}
         <div className="flex-shrink-0 flex justify-center sm:justify-start">
           <div
-            className={`w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center ${
-              accentClass || theme.accent
-            } text-white shadow-inner`}
+            className={`w-14 h-14 md:w-16 md:h-16 rounded-lg flex items-center justify-center ${accentClass || theme.accent
+              } text-white shadow-inner`}
             aria-hidden="true"
           >
             {icon}
