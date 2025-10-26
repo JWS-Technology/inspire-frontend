@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PhoneCall, Phone, Mail, Globe, ArrowUp } from "lucide-react";
+import { SiFacebook, SiInstagram, SiYoutube, SiLinkedin } from "react-icons/si";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -92,6 +93,27 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 italic max-w-[320px]">
               Empowering Growth through Knowledge &amp; Technology.
             </p>
+
+            {/* SOCIAL MEDIA ICONS */}
+            <div className="flex gap-5 mt-6">
+              <a href="https://www.facebook.com/inspiresoftechsolutions" target="_blank" rel="noreferrer"
+                className="hover:text-amber-400 transition">
+                <SiFacebook className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/inspire_softech_solutions" target="_blank" rel="noreferrer"
+                className="hover:text-amber-400 transition">
+                <SiInstagram className="w-5 h-5" />
+              </a>
+              <a href="https://www.linkedin.com/company/idmatrixindia" target="_blank" rel="noreferrer"
+                className="hover:text-amber-400 transition">
+                <SiLinkedin className="w-5 h-5" />
+              </a>
+              {/* <a href="https://www.youtube.com/@inspiresoftechgroup" target="_blank" rel="noreferrer"
+                className="hover:text-amber-400 transition">
+                <SiYoutube className="w-5 h-5" />
+              </a> */}
+            </div>
+
           </div>
 
           {/* MIDDLE: Quick Links */}
