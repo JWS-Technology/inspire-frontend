@@ -11,6 +11,8 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import JobCard from "@/components/careers/JobCard";
+import Footer from "@/components/Footer";
+
 
 const JOBS = [
   {
@@ -185,11 +187,10 @@ const CareersPage = () => {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition ${
-                    filter === f
+                  className={`px-4 py-2 rounded-md text-sm font-medium transition ${filter === f
                       ? "bg-amber-500 text-white shadow"
                       : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50"
-                  }`}
+                    }`}
                 >
                   {f}
                 </button>
@@ -215,6 +216,7 @@ const CareersPage = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
