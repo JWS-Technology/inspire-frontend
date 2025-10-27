@@ -196,15 +196,17 @@ const NavbarDesktop: React.FC<Props> = ({ links }) => {
             </ul>
 
             {/* Button */}
-            <button
-                ref={buttonRef}
-                onClick={handleButtonClick}
-                className="relative bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-2 rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-amber-500/25 active:scale-95 group overflow-hidden"
-            >
-                <span className="relative z-10">Login</span>
-                {/* Shine effect */}
-                <div className="absolute inset-0 -left-10 -top-8 h-20 w-10 rotate-12 bg-white/20 transition-all duration-700 group-hover:left-32" />
-            </button>
+            <Link href="https://edinztech.com/program" target="_blank">
+                <button
+                    ref={buttonRef}
+                    onClick={handleButtonClick}
+                    className="relative bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-2 rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-amber-500/25 active:scale-95 group overflow-hidden"
+                >
+                    <span className="relative z-10">Get Started</span>
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 -left-10 -top-8 h-20 w-10 rotate-12 bg-white/20 transition-all duration-700 group-hover:left-32" />
+                </button>
+            </Link>
         </nav>
     );
 };
