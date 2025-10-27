@@ -6,10 +6,11 @@ import CompanySection from "../components/CompanySection";
 import Footer from "../components/Footer";
 // import MarqueeRows from "../components/MarqueeRows"
 import ClientSection from "@/components/home/ClientSection";
+import WorkSection from "@/components/careers/WorkSection";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-white">
       <Navbar />
       <Hero />
       {/* <MarqueeRows /> */}
@@ -17,6 +18,7 @@ export default function Home() {
       <AboutSection />
       <StatsSection />
       <CompanySection />
+      <WorkSection />
       <Footer />
     </div>
   );
