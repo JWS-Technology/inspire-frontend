@@ -59,7 +59,7 @@ const WorkSection = () => {
           {/* CTA Button */}
           <div className="mt-8">
             <a
-              href="/careers"
+              href="/"
               className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 focus:ring-2 focus:ring-amber-300 text-white font-semibold px-6 py-3 rounded shadow transition-transform transform hover:-translate-y-0.5"
             >
               Apply Now
@@ -100,7 +100,7 @@ const WorkSection = () => {
 
               <div className="mt-6 text-center md:text-left">
                 <a
-                  href="/careers"
+                  href="/"
                   className="text-sm font-medium text-amber-700 hover:underline font-semibold"
                 >
                   Register for Internship
