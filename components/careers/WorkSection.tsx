@@ -62,7 +62,7 @@ const WorkSection = () => {
               href="/careers"
               className="inline-flex items-center gap-3 bg-amber-500 hover:bg-amber-600 focus:ring-2 focus:ring-amber-300 text-white font-semibold px-6 py-3 rounded shadow transition-transform transform hover:-translate-y-0.5"
             >
-              View Careers
+              Apply Now
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
