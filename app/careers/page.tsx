@@ -153,21 +153,21 @@ const CareersPage = () => {
       </section>
 
       {/* CURRENT OPENINGS SECTION */}
-      <section id="openings" className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+      {/* <section id="openings" className="py-20 px-6 bg-white"> */}
+      {/* <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-8">
+      {/* <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900">
               Current Openings
             </h2>
             <p className="text-gray-600 mt-2">
               Find your perfect role and start your journey with us
             </p>
-          </div>
+          </div> */}
 
-          {/* Search + Filters */}
-          <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8">
-            <label className="relative flex-1">
+      {/* Search + Filters */}
+      {/* <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-8"> */}
+      {/* <label className="relative flex-1">
               <span className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-gray-400">
                 <Search className="w-4 h-4" />
               </span>
@@ -178,9 +178,9 @@ const CareersPage = () => {
                 placeholder="Search by title, company, or department..."
                 className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-amber-200 text-black"
               />
-            </label>
+            </label> */}
 
-            <div className="flex items-center gap-3">
+      {/* <div className="flex items-center gap-3">
               {["All", "Full-time", "Internship"].map((f) => (
                 <button
                   key={f}
@@ -195,10 +195,10 @@ const CareersPage = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </div> */}
 
-          {/* Job list */}
-          <div className="space-y-6">
+      {/* Job list */}
+      {/* <div className="space-y-6">
             {filtered.length === 0 ? (
               <div className="text-center text-gray-500 py-12">
                 No openings found.
@@ -213,8 +213,8 @@ const CareersPage = () => {
               ))
             )}
           </div>
-        </div>
-      </section>
+        </div> */}
+      {/* </section> */}
     </div>
   );
 };
