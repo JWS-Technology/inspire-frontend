@@ -173,7 +173,7 @@ const Footer: React.FC = () => {
 
         {/* copyright row */}
         <div className="mt-6 text-center text-sm text-gray-400">
-          © 2025 INSPIRE SOFTECH Group of Companies – All Rights Reserved
+          © 2025 INSPIRE SOFTECH Solutions Group of Companies – All Rights Reserved
         </div>
       </div>
 
