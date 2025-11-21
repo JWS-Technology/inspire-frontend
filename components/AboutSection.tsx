@@ -220,9 +220,7 @@ const AboutSection: React.FC = () => {
                                     </div>
                                     <div>
                                         <p className="text-gray-500 text-xs md:text-sm">Call Now</p>
-                                        <p className="font-semibold text-green-700 text-base md:text-lg">
-                                            +91 86674 93679
-                                        </p>
+                                        <p className="text-black" style={{ fontFamily: "sans-serif" }}>+91 86674 93679</p>
                                     </div>
                                 </div>
                             </a>
