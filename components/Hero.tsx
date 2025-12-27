@@ -232,13 +232,13 @@ const Hero: React.FC = () => {
                 </button>
               </Link>
             </div>
-            <div className="flex items-center justify-center px-4">
+            {/* <div className="flex items-center justify-center px-4">
               <div className="bg-zinc-800 px-6 sm:px-10 md:px-16 py-2 sm:py-1 rounded-xl translate-y-10 sm:translate-y-16 shadow-lg">
                 <h1 className="text-base sm:text-lg md:text-lg text-center animate-pulse duration-500 text-white">
                   ⚠️ Website under maintenance ⚠️
                 </h1>
               </div>
-            </div>
+            </div> */}
 
 
           </div>
