@@ -25,10 +25,6 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-
   // Keep the previous dev config if you still need it for the cross-origin warning
   // dev: {
   //   allowedDevOrigins: ['http://10.204.114.213'],
